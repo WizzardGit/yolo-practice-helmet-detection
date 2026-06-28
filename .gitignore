@@ -1,0 +1,58 @@
+﻿# Python / venv
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.cache/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Datasets and raw data
+datasets/
+*.zip
+*.rar
+*.7z
+
+# Training runs / raw experiments
+runs/
+compare_images/
+
+# Heavy model files
+*.pt
+*.pth
+*.onnx
+*.engine
+*.weights
+*.torchscript
+
+# Ultralytics / ML temp
+*.cache
+*.log
+
+# Keep final lightweight artifacts
+!README.md
+!requirements.txt
+!start.bat
+!scripts/
+!scripts/**
+!report/
+!report/**
+!report_assets/
+!report_assets/**
+!demo/
+!demo/**
+!results/runtime_comparison.csv
+
+# Ignore raw generated result folders
+results/*
+!results/
+!results/runtime_comparison.csv
+
+# Demo/test image
+bus.jpg

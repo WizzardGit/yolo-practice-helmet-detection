@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>YOLO Practice Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 32px; line-height: 1.5; }
+    h1, h2 { margin-top: 28px; }
+    table { border-collapse: collapse; margin: 16px 0; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #f2f2f2; }
+    figure { margin: 24px 0; padding: 12px; border: 1px solid #ddd; }
+    img { max-width: 100%; height: auto; display: block; }
+    figcaption { margin-top: 8px; color: #555; font-size: 14px; }
+    .note { background: #fff8dc; padding: 12px; border: 1px solid #ead27a; }
+  </style>
+</head>
+<body>
+  <h1>YOLO Practice Demo</h1>
+
+  <p>
+    Практика: дообучение и оптимизация YOLO для нового класса объектов.
+    Модель YOLO11n была дообучена на классе <b>helmet</b>, затем экспортирована
+    и проверена в PyTorch, ONNX Runtime CUDA, TensorRT FP16 и TensorRT INT8.
+  </p>
+
+  <div class="note">
+    Это демо не запускает обучение заново. Оно открывает готовые результаты:
+    графики обучения, метрики и визуальное сравнение предсказаний.
+  </div>
+
+  <h2>Runtime comparison</h2>
+  <table> <colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup> <tr><th>Runtime</th><th>Model</th><th>Precision</th><th>Recall</th><th>mAP50</th><th>mAP50-95</th><th>Inference_ms</th><th>FPS</th><th>Notes</th></tr> <tr><td>PyTorch</td><td>best.pt</td><td>0.963</td><td>0.935</td><td>0.981</td><td>0.679</td><td>1.3</td><td>769</td><td>Original fine-tuned PyTorch model</td></tr> <tr><td>ONNX Runtime CUDA</td><td>helmet_yolo11n.onnx</td><td>0.960</td><td>0.937</td><td>0.981</td><td>0.679</td><td>3.0</td><td>333</td><td>ONNX export validated with CUDAExecutionProvider</td></tr> <tr><td>TensorRT FP16</td><td>helmet_yolo11n_fp16.engine</td><td>0.960</td><td>0.937</td><td>0.981</td><td>0.679</td><td>1.5</td><td>667</td><td>Optimized TensorRT FP16 engine</td></tr> <tr><td>TensorRT INT8</td><td>helmet_yolo11n_int8.engine</td><td>0.960</td><td>0.932</td><td>0.978</td><td>0.663</td><td>1.9</td><td>526</td><td>INT8 quantized TensorRT engine</td></tr> </table>
+
+  <h2>Images and plots</h2>
+  <figure><img src='assets/01_training_results.png' alt='01_training_results.png'><figcaption>01_training_results.png</figcaption></figure>
+<figure><img src='assets/02_confusion_matrix.png' alt='02_confusion_matrix.png'><figcaption>02_confusion_matrix.png</figcaption></figure>
+<figure><img src='assets/05_dataset_labels.jpg' alt='05_dataset_labels.jpg'><figcaption>05_dataset_labels.jpg</figcaption></figure>
+<figure><img src='assets/predict_01_pytorch.jpg' alt='predict_01_pytorch.jpg'><figcaption>predict_01_pytorch.jpg</figcaption></figure>
+<figure><img src='assets/predict_02_onnx.jpg' alt='predict_02_onnx.jpg'><figcaption>predict_02_onnx.jpg</figcaption></figure>
+<figure><img src='assets/predict_03_tensorrt_fp16.jpg' alt='predict_03_tensorrt_fp16.jpg'><figcaption>predict_03_tensorrt_fp16.jpg</figcaption></figure>
+<figure><img src='assets/predict_04_tensorrt_int8.jpg' alt='predict_04_tensorrt_int8.jpg'><figcaption>predict_04_tensorrt_int8.jpg</figcaption></figure>
+
+</body>
+</html>

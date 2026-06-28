@@ -1,0 +1,5 @@
+﻿ultralytics[export]
+onnxruntime-gpu[cuda,cudnn]
+tensorrt-cu12
+netron
+nvidia-modelopt[onnx]>=0.44
