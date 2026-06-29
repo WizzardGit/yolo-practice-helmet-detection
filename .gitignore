@@ -56,3 +56,10 @@ results/*
 
 # Demo/test image
 bus.jpg
+
+!results/benchmark_runtime_repeated.csv
+
+!results/benchmark_runtime_repeated.csv
+!results/benchmark_summary.csv
+!runtime_graphs/
+!runtime_graphs/**
