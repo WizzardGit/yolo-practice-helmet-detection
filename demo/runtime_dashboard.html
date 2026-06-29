@@ -28,18 +28,18 @@ pre{background:#0b0e14;border:1px solid #252c3a;border-radius:12px;padding:13px;
 <div class="card"><div class="num">1 файл</div><div class="label">основная защита через dashboard</div></div>
 </div>
 
-<section id="answers"><h2>1. Ответы на замечания Матвея</h2>
-<div class="tw"><table><thead><tr><th>Замечание</th><th>Что сделано</th><th>Где смотреть</th></tr></thead><tbody>
+<section id="answers"><h2>1. Изменения</h2>
+<div class="tw"><table><thead><tr><th>Проблема</th><th>Что сделано</th><th>Где смотреть</th></tr></thead><tbody>
 <tr><td>Кода обучения нет</td><td>Добавлен отдельный скрипт обучения YOLO11n на helmet.</td><td><code>scripts/train_helmet.py</code></td></tr>
-<tr><td>Как будто взял готовую модель</td><td>Показан pipeline: датасет → train → export → validate → benchmark.</td><td><code>scripts/filter_helmet_dataset.py</code><br><code>scripts/train_helmet.py</code><br><code>scripts/export_validate.py</code></td></tr>
+<tr><td>Не понятно что с моделью</td><td>Показан pipeline: датасет → train → export → validate → benchmark.</td><td><code>scripts/filter_helmet_dataset.py</code><br><code>scripts/train_helmet.py</code><br><code>scripts/export_validate.py</code></td></tr>
 <tr><td>Нет анализа графов исполнения</td><td>Сохранены original ONNX graph и ONNX Runtime optimized graph. Для TensorRT сохранены info/error файлы.</td><td><code>runtime_graphs/</code></td></tr>
 <tr><td>Неясно, откуда миллисекунды</td><td>Описана методология: Ultralytics model.val(), строка Speed, inference ms/image.</td><td>Раздел 4 ниже</td></tr>
 <tr><td>Не указана видеокарта</td><td>Указана RTX 4070 12 GB VRAM.</td><td>Раздел 4 ниже</td></tr>
 <tr><td>INT8/FP16 неочевидно</td><td>Сделаны warmup + 5 повторов. Вывод: INT8 примерно равен FP16 по скорости, но ниже по качеству.</td><td><code>results/benchmark_runtime_repeated.csv</code><br><code>results/benchmark_summary.csv</code></td></tr>
-<tr><td>Воспроизвести ничего не могу</td><td>Добавлены скрипты этапов и старт через один файл.</td><td><code>start.bat</code></td></tr>
+<tr><td>Отсутствие возможности воспроизведения</td><td>Добавлены скрипты этапов и старт через один файл.</td><td><code>start.bat</code></td></tr>
 </tbody></table></div></section>
 
-<section id="model"><h2>2. Что такое .pt / .onnx / .engine</h2>
+<section id="model"><h2>2. Форматы файлов</h2>
 <div class="tw"><table><thead><tr><th>Формат</th><th>Файл</th><th>Что значит</th></tr></thead><tbody>
 <tr><td><code>.pt</code></td><td><code>yolo11n.pt</code> / <code>runs/train_helmet/weights/best.pt</code></td><td>PyTorch-веса. yolo11n.pt — стартовая модель, best.pt — результат дообучения.</td></tr>
 <tr><td><code>.onnx</code></td><td><code>results/models/helmet_yolo11n.onnx</code></td><td>Универсальный формат для ONNX Runtime.</td></tr>
@@ -81,7 +81,6 @@ pre{background:#0b0e14;border:1px solid #252c3a;border-radius:12px;padding:13px;
 <tr><td>✅</td><td><code>runtime_graphs/tensorrt_fp16_engine_info.txt</code></td><td>информация по TensorRT FP16 engine</td></tr>
 <tr><td>✅</td><td><code>runtime_graphs/tensorrt_int8_engine_info.txt</code></td><td>информация по TensorRT INT8 engine</td></tr>
 </tbody></table></div>
-<div class="call">TensorRT EngineInspector мог не открыть .engine из-за версии TensorRT/CUDA/driver/GPU. Это не скрыто: ошибка сохранена в <code>runtime_graphs/tensorrt_*_inspector_error.txt</code>. Benchmark при этом запускался.</div>
 </section>
 
 <section id="files"><h2>7. Ключевые файлы проекта</h2>
