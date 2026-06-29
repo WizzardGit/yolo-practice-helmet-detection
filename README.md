@@ -1,53 +1,106 @@
-# Практика YOLO: детекция касок
+﻿# YOLO Helmet Detection
 
-Проект по теме: **дообучение и оптимизация YOLO для новых классов объектов**.
+Проект по теме: дообучение и оптимизация YOLO для нового класса объектов.
 
-Что сделано:
-- дообучена YOLO11n на классе `helmet`;
-- модель экспортирована в ONNX;
-- собраны TensorRT FP16 и TensorRT INT8 версии;
-- сравнены PyTorch, ONNX Runtime CUDA, TensorRT FP16 и TensorRT INT8;
-- сделаны графики обучения, таблица метрик и примеры предсказаний.
+Модель YOLO11n была дообучена для детекции касок, класс `helmet`.
+После обучения модель была экспортирована и сравнена в разных runtime:
 
-## Как посмотреть результат
+- PyTorch
+- ONNX Runtime CUDA
+- TensorRT FP16
+- TensorRT INT8
 
-На Windows достаточно запустить:
+## Как открыть результаты
 
-    start.bat
+На Windows достаточно запустить файл `start.bat` в корне проекта.
 
-После запуска откроется HTML-демо:
+Он сам открывает главную страницу:
 
-    demo/index.html
+`demo/runtime_dashboard.html`
 
-В демо есть:
-- таблица сравнения runtime;
-- графики обучения;
-- confusion matrix;
-- примеры предсказаний одной и той же картинки в разных runtime.
+На этой странице есть:
 
-## Результаты
+- краткий вывод;
+- железо, на котором проводились замеры;
+- методология замеров;
+- таблица benchmark;
+- сравнение FP16 и INT8;
+- объяснение, почему INT8 не быстрее FP16;
+- анализ runtime-графов;
+- ссылки на CSV и файлы анализа.
 
-| Runtime | Precision | Recall | mAP50 | mAP50-95 | Inference |
-|---|---:|---:|---:|---:|---:|
-| PyTorch | 0.963 | 0.935 | 0.981 | 0.679 | 1.3 ms |
-| ONNX Runtime CUDA | 0.960 | 0.937 | 0.981 | 0.679 | 3.0 ms |
-| TensorRT FP16 | 0.960 | 0.937 | 0.981 | 0.679 | 1.5 ms |
-| TensorRT INT8 | 0.960 | 0.932 | 0.978 | 0.663 | 1.9 ms |
+## Что было добавлено для воспроизводимости
+
+Код обучения:
+
+`scripts/train_helmet.py`
+
+Код экспорта и валидации:
+
+`scripts/export_validate.py`
+
+Повторный benchmark:
+
+`scripts/benchmark_runtimes.py`
+
+Сводка benchmark:
+
+`scripts/summarize_benchmark.py`
+
+Сохранение ONNX Runtime optimized graph:
+
+`scripts/save_ort_optimized_graph.py`
+
+Анализ runtime-графов:
+
+`scripts/inspect_runtime_graphs.py`
+
+Генерация HTML-дашборда:
+
+`scripts/build_dashboard.py`
+
+## Основные результаты
+
+Сводная таблица:
+
+`results/benchmark_summary.csv`
+
+Все 5 повторных прогонов:
+
+`results/benchmark_runtime_repeated.csv`
+
+Файлы анализа графов:
+
+`runtime_graphs/`
+
+HTML-дашборд:
+
+`demo/runtime_dashboard.html`
+
+## Окружение замеров
+
+- GPU: NVIDIA GeForce RTX 4070, 12 GB VRAM
+- OS: Windows 10 Pro 22H2
+- Python: 3.11.7
+- PyTorch: 2.12.1+cu126
+- CUDA: 12.6
+- test split: 1604 images, 4863 helmet objects
+- imgsz: 640
+- batch: 1
+
+## Методология замеров
+
+Время взято из вывода Ultralytics `model.val()`:
+
+`Speed: preprocess ms, inference ms, postprocess ms per image`
+
+Для сравнения использовался показатель `inference ms`.
+
+Для каждого runtime был сделан warmup, затем 5 повторных прогонов на одном и том же test split.
 
 ## Вывод
 
-Модель YOLO11n успешно дообучена на новом классе `helmet`.
+TensorRT FP16 оказался лучшим практическим вариантом.
 
-Качество PyTorch, ONNX Runtime CUDA и TensorRT FP16 получилось почти одинаковым. TensorRT INT8 уменьшил размер модели, но немного снизил качество и не ускорил инференс относительно FP16.
+TensorRT INT8 уменьшил размер engine, но не дал ускорения относительно FP16 на маленькой YOLO11n при batch=1 и немного снизил качество.
 
-В этом эксперименте лучший практический вариант — **TensorRT FP16**: он сохранил качество и дал быстрый inference.
-
-## Что смотреть
-
-Основные файлы:
-- `start.bat` — быстрый запуск демо;
-- `demo/index.html` — готовая страница с результатами;
-- `report_assets/` — картинки для отчёта;
-- `results/runtime_comparison.csv` — таблица сравнения runtime;
-- `scripts/filter_helmet_dataset.py` — скрипт фильтрации датасета под класс helmet;
-- `scripts/make_demo.ps1` — скрипт сборки демо.

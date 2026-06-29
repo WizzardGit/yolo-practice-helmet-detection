@@ -1,0 +1,22 @@
+model: D:\YOLOPractice\results\models\helmet_yolo11n.onnx
+file_size_mb: 10.11
+nodes: 318
+inputs: 1
+outputs: 1
+
+operators:
+Conv: 88
+Mul: 78
+Sigmoid: 77
+Concat: 21
+Add: 16
+Reshape: 11
+Split: 10
+MaxPool: 3
+Transpose: 3
+MatMul: 2
+Softmax: 2
+Resize: 2
+Slice: 2
+Sub: 2
+Div: 1

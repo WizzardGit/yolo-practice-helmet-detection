@@ -1,0 +1,8 @@
+model: D:\YOLOPractice\results\models\helmet_yolo11n_int8.engine
+file_size_mb: 4.25
+
+note:
+TensorRT .engine files are environment-specific.
+They depend on TensorRT version, CUDA version, GPU architecture and driver.
+The engine was successfully executed during Ultralytics benchmark.
+If TensorRT EngineInspector cannot deserialize it separately, the error is saved below.

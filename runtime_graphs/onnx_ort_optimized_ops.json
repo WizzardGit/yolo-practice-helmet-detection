@@ -1,0 +1,17 @@
+{
+  "Conv": 88,
+  "QuickGelu": 76,
+  "Split": 11,
+  "Add": 16,
+  "Concat": 21,
+  "MaxPool": 3,
+  "Reshape": 11,
+  "FusedMatMul": 2,
+  "Softmax": 2,
+  "Resize": 2,
+  "Transpose": 1,
+  "Sub": 2,
+  "Div": 1,
+  "Mul": 1,
+  "Sigmoid": 1
+}

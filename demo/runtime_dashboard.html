@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang='ru'>
+<head>
+<meta charset='utf-8'>
+<title>YOLO Helmet Detection  результаты</title>
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #111;
+    color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.55;
+}
+
+body {
+    padding: 40px 64px;
+}
+
+main {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+h1, h2, h3, p, li, td, th, summary, pre {
+    text-indent: 0;
+    margin-left: 0;
+    clip-path: none;
+}
+
+h1 {
+    font-size: 40px;
+    margin: 0 0 12px 0;
+}
+
+h2 {
+    font-size: 30px;
+    margin: 44px 0 18px 0;
+    padding-top: 24px;
+    border-top: 1px solid #333;
+}
+
+h3 {
+    font-size: 22px;
+    margin: 0 0 12px 0;
+}
+
+.card {
+    background: #1b1b1b;
+    border: 1px solid #333;
+    border-radius: 14px;
+    padding: 26px 32px;
+    margin: 18px 0;
+}
+
+.muted {
+    color: #aaa;
+}
+
+.good {
+    color: #9be28f;
+    font-weight: bold;
+}
+
+.warn {
+    color: #ffd36a;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 15px;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #242424;
+}
+
+tr:nth-child(even) td {
+    background: #171717;
+}
+
+code, pre {
+    font-family: Consolas, monospace;
+}
+
+pre {
+    background: #080808;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 18px 22px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    font-size: 14px;
+}
+
+a {
+    color: #8ab4ff;
+}
+
+.links a {
+    display: inline-block;
+    margin: 8px 18px 8px 0;
+}
+
+details {
+    background: #171717;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 14px 0;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+.image-card {
+    background: #1b1b1b;
+    border: 1px solid #333;
+    border-radius: 14px;
+    padding: 16px;
+}
+
+.image-card img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+.missing {
+    color: #ff8888;
+}
+</style>
+</head>
+<body>
+<main>
+<h1>YOLO Helmet Detection</h1>
+<p class='muted'>Результаты обучения, экспорта, benchmark и анализа runtime-графов.</p>
+<h2>Краткий вывод</h2>
+
+    <div class='card'>
+        <p>Модель <b>YOLO11n</b> была дообучена для детекции касок, класс <code>helmet</code>.</p>
+        <p><span class='good'>Лучший практический вариант  TensorRT FP16.</span></p>
+        <p><span class='warn'>TensorRT INT8 уменьшает размер engine, но не даёт заметного ускорения относительно FP16 и снижает качество.</span></p>
+    </div>
+    
+<h2>Окружение</h2>
+
+    <table>
+        <tr><th>Параметр</th><th>Значение</th></tr>
+        <tr><td>GPU</td><td>NVIDIA GeForce RTX 4070, 12 GB VRAM</td></tr>
+        <tr><td>OS</td><td>Windows 10 Pro 22H2</td></tr>
+        <tr><td>Python</td><td>3.11.7</td></tr>
+        <tr><td>PyTorch</td><td>2.12.1+cu126</td></tr>
+        <tr><td>CUDA</td><td>12.6</td></tr>
+        <tr><td>Dataset test split</td><td>1604 images, 4863 helmet objects</td></tr>
+        <tr><td>imgsz</td><td>640</td></tr>
+        <tr><td>batch</td><td>1</td></tr>
+    </table>
+    
+<h2>Методология замеров</h2>
+
+    <div class='card'>
+        <p>Время взято из вывода Ultralytics <code>model.val()</code>: <code>Speed: preprocess ms, inference ms, postprocess ms per image</code>.</p>
+        <p>Для сравнения использовался показатель <b>inference ms</b>, потому что он отражает прямое время работы модели без загрузки данных и постобработки.</p>
+        <p>Для каждого runtime был сделан warmup, затем 5 повторных прогонов на одном и том же test split.</p>
+    </div>
+    
+<h2>Сводная таблица benchmark</h2>
+<table>
+<thead><tr>
+<th>runtime</th>
+<th>repeats</th>
+<th>inference_ms_values</th>
+<th>inference_ms_mean</th>
+<th>inference_ms_median</th>
+<th>inference_ms_min</th>
+<th>inference_ms_max</th>
+<th>precision_mean</th>
+<th>recall_mean</th>
+<th>mAP50_mean</th>
+<th>mAP50-95_mean</th>
+</tr></thead><tbody>
+<tr>
+<td>PyTorch</td>
+<td>5</td>
+<td>6.366 / 6.944 / 4.135 / 3.66 / 3.761</td>
+<td>4.973</td>
+<td>4.135</td>
+<td>3.66</td>
+<td>6.944</td>
+<td>0.9635</td>
+<td>0.9343</td>
+<td>0.981</td>
+<td>0.6785</td>
+</tr>
+<tr>
+<td>ONNX Runtime CUDA</td>
+<td>5</td>
+<td>3.269 / 3.183 / 2.897 / 2.916 / 2.872</td>
+<td>3.027</td>
+<td>2.916</td>
+<td>2.872</td>
+<td>3.269</td>
+<td>0.9604</td>
+<td>0.9368</td>
+<td>0.9808</td>
+<td>0.6789</td>
+</tr>
+<tr>
+<td>TensorRT FP16</td>
+<td>5</td>
+<td>1.464 / 1.47 / 1.484 / 1.55 / 1.457</td>
+<td>1.485</td>
+<td>1.47</td>
+<td>1.457</td>
+<td>1.55</td>
+<td>0.9604</td>
+<td>0.9369</td>
+<td>0.9809</td>
+<td>0.6786</td>
+</tr>
+<tr>
+<td>TensorRT INT8</td>
+<td>5</td>
+<td>1.518 / 1.525 / 1.529 / 1.526 / 1.531</td>
+<td>1.526</td>
+<td>1.526</td>
+<td>1.518</td>
+<td>1.531</td>
+<td>0.9596</td>
+<td>0.9318</td>
+<td>0.9778</td>
+<td>0.6625</td>
+</tr>
+</tbody></table>
+<h2>Все повторные замеры</h2>
+<details><summary>Показать raw benchmark table</summary>
+<table>
+<thead><tr>
+<th>runtime</th>
+<th>repeat</th>
+<th>model</th>
+<th>gpu</th>
+<th>imgsz</th>
+<th>batch</th>
+<th>total_seconds</th>
+<th>preprocess_ms</th>
+<th>inference_ms</th>
+<th>postprocess_ms</th>
+<th>fps_from_inference_ms</th>
+<th>precision</th>
+<th>recall</th>
+<th>mAP50</th>
+<th>mAP50-95</th>
+</tr></thead><tbody>
+<tr>
+<td>PyTorch</td>
+<td>1</td>
+<td>D:\YOLOPractice\runs\train_helmet\weights\best.pt</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>33.7983</td>
+<td>1.0215960095515777</td>
+<td>6.366259351692353</td>
+<td>1.1175885906357648</td>
+<td>157.08</td>
+<td>0.9635247662522516</td>
+<td>0.9343056622372675</td>
+<td>0.9809992113734052</td>
+<td>0.6784739309980207</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>2</td>
+<td>D:\YOLOPractice\runs\train_helmet\weights\best.pt</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>35.8406</td>
+<td>1.053396695689182</td>
+<td>6.943920448948187</td>
+<td>1.1780173941257008</td>
+<td>144.01</td>
+<td>0.9635247662522516</td>
+<td>0.9343056622372675</td>
+<td>0.9809992113734052</td>
+<td>0.6784739309980207</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>3</td>
+<td>D:\YOLOPractice\runs\train_helmet\weights\best.pt</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>27.5838</td>
+<td>0.810870511114465</td>
+<td>4.134687157713592</td>
+<td>0.8501360973327576</td>
+<td>241.86</td>
+<td>0.9635247662522516</td>
+<td>0.9343056622372675</td>
+<td>0.9809992113734052</td>
+<td>0.6784739309980207</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>4</td>
+<td>D:\YOLOPractice\runs\train_helmet\weights\best.pt</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>25.7864</td>
+<td>0.7544963220262115</td>
+<td>3.6597547379070936</td>
+<td>0.7384426442109643</td>
+<td>273.24</td>
+<td>0.9635247662522516</td>
+<td>0.9343056622372675</td>
+<td>0.9809992113734052</td>
+<td>0.6784739309980207</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>5</td>
+<td>D:\YOLOPractice\runs\train_helmet\weights\best.pt</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>26.0317</td>
+<td>0.7625424564468264</td>
+<td>3.7613123444262007</td>
+<td>0.7512607859787844</td>
+<td>265.86</td>
+<td>0.9635247662522516</td>
+<td>0.9343056622372675</td>
+<td>0.9809992113734052</td>
+<td>0.6784739309980207</td>
+</tr>
+<tr>
+<td>ONNX Runtime CUDA</td>
+<td>1</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n.onnx</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>26.2147</td>
+<td>0.9373102248286331</td>
+<td>3.2690711969891773</td>
+<td>0.8386841017411478</td>
+<td>305.9</td>
+<td>0.9603664515389149</td>
+<td>0.9367584253822866</td>
+<td>0.9808459848219486</td>
+<td>0.6789209693208312</td>
+</tr>
+<tr>
+<td>ONNX Runtime CUDA</td>
+<td>2</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n.onnx</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>26.1157</td>
+<td>0.9415648376323548</td>
+<td>3.1826969435289874</td>
+<td>0.8464038661336224</td>
+<td>314.2</td>
+<td>0.9603664515389149</td>
+<td>0.9367584253822866</td>
+<td>0.9808459848219486</td>
+<td>0.6789209693208312</td>
+</tr>
+<tr>
+<td>ONNX Runtime CUDA</td>
+<td>3</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n.onnx</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>25.1739</td>
+<td>0.8956554854268955</td>
+<td>2.8967865350240483</td>
+<td>0.7777241895618637</td>
+<td>345.21</td>
+<td>0.9603664515389149</td>
+<td>0.9367584253822866</td>
+<td>0.9808459848219486</td>
+<td>0.6789209693208312</td>
+</tr>
+<tr>
+<td>ONNX Runtime CUDA</td>
+<td>4</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n.onnx</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>25.0767</td>
+<td>0.8990382797074878</td>
+<td>2.9164567326156057</td>
+<td>0.7699109104614672</td>
+<td>342.88</td>
+<td>0.9603664515389149</td>
+<td>0.9367584253822866</td>
+<td>0.9808459848219486</td>
+<td>0.6789209693208312</td>
+</tr>
+<tr>
+<td>ONNX Runtime CUDA</td>
+<td>5</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n.onnx</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>24.7847</td>
+<td>0.8923420199904907</td>
+<td>2.872428989499178</td>
+<td>0.7816400871602842</td>
+<td>348.14</td>
+<td>0.9603664515389149</td>
+<td>0.9367584253822866</td>
+<td>0.9808459848219486</td>
+<td>0.6789209693208312</td>
+</tr>
+<tr>
+<td>TensorRT FP16</td>
+<td>1</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n_fp16.engine</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>22.6759</td>
+<td>0.9150480052953855</td>
+<td>1.4642574816409202</td>
+<td>0.801391023023349</td>
+<td>682.94</td>
+<td>0.9604389955726034</td>
+<td>0.9368702447049146</td>
+<td>0.9809114709047274</td>
+<td>0.6786159654851616</td>
+</tr>
+<tr>
+<td>TensorRT FP16</td>
+<td>2</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n_fp16.engine</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>22.5771</td>
+<td>0.8900970075917581</td>
+<td>1.4698159600566825</td>
+<td>0.795996820924576</td>
+<td>680.36</td>
+<td>0.9604389955726034</td>
+<td>0.9368702447049146</td>
+<td>0.9809114709047274</td>
+<td>0.6786159654851616</td>
+</tr>
+<tr>
+<td>TensorRT FP16</td>
+<td>3</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n_fp16.engine</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>22.7736</td>
+<td>0.9148171443496239</td>
+<td>1.484119139325473</td>
+<td>0.8196197634146541</td>
+<td>673.8</td>
+<td>0.9604389955726034</td>
+<td>0.9368702447049146</td>
+<td>0.9809114709047274</td>
+<td>0.6786159654851616</td>
+</tr>
+<tr>
+<td>TensorRT FP16</td>
+<td>4</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n_fp16.engine</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>22.9712</td>
+<td>0.9105379685299109</td>
+<td>1.5500114699843062</td>
+<td>0.8149649620191438</td>
+<td>645.16</td>
+<td>0.9604389955726034</td>
+<td>0.9368702447049146</td>
+<td>0.9809114709047274</td>
+<td>0.6786159654851616</td>
+</tr>
+<tr>
+<td>TensorRT FP16</td>
+<td>5</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n_fp16.engine</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>23.0539</td>
+<td>0.8957800502930082</td>
+<td>1.4565829169849964</td>
+<td>0.8216922692815191</td>
+<td>686.54</td>
+<td>0.9604389955726034</td>
+<td>0.9368702447049146</td>
+<td>0.9809114709047274</td>
+<td>0.6786159654851616</td>
+</tr>
+<tr>
+<td>TensorRT INT8</td>
+<td>1</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n_int8.engine</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>22.7819</td>
+<td>0.9112808599872422</td>
+<td>1.5183026173910907</td>
+<td>0.8051779294331928</td>
+<td>658.63</td>
+<td>0.9595530051591942</td>
+<td>0.9317766254842134</td>
+<td>0.9777757821537159</td>
+<td>0.6625444217480048</td>
+</tr>
+<tr>
+<td>TensorRT INT8</td>
+<td>2</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n_int8.engine</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>22.8322</td>
+<td>0.9157209480187143</td>
+<td>1.5248540520930474</td>
+<td>0.8143897752156783</td>
+<td>655.8</td>
+<td>0.9595530051591942</td>
+<td>0.9317766254842134</td>
+<td>0.9777757821537159</td>
+<td>0.6625444217480048</td>
+</tr>
+<tr>
+<td>TensorRT INT8</td>
+<td>3</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n_int8.engine</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>22.8966</td>
+<td>0.8976551748526531</td>
+<td>1.5289127187132185</td>
+<td>0.8307197006382141</td>
+<td>654.06</td>
+<td>0.9595530051591942</td>
+<td>0.9317766254842134</td>
+<td>0.9777757821537159</td>
+<td>0.6625444217480048</td>
+</tr>
+<tr>
+<td>TensorRT INT8</td>
+<td>4</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n_int8.engine</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>22.6587</td>
+<td>0.9134360975928446</td>
+<td>1.525798068328719</td>
+<td>0.8072865966279548</td>
+<td>655.39</td>
+<td>0.9595530051591942</td>
+<td>0.9317766254842134</td>
+<td>0.9777757821537159</td>
+<td>0.6625444217480048</td>
+</tr>
+<tr>
+<td>TensorRT INT8</td>
+<td>5</td>
+<td>D:\YOLOPractice\results\models\helmet_yolo11n_int8.engine</td>
+<td>NVIDIA GeForce RTX 4070</td>
+<td>640</td>
+<td>1</td>
+<td>22.8489</td>
+<td>0.9071654609292443</td>
+<td>1.5306329180311151</td>
+<td>0.826804051801337</td>
+<td>653.32</td>
+<td>0.9595530051591942</td>
+<td>0.9317766254842134</td>
+<td>0.9777757821537159</td>
+<td>0.6625444217480048</td>
+</tr>
+</tbody></table>
+</details>
+<h2>FP16 против INT8</h2>
+
+    <div class='card'>
+        <p>По повторным замерам TensorRT INT8 не оказался быстрее TensorRT FP16: оба варианта дают примерно <b>1.5 ms inference per image</b>.</p>
+        <p>Но качество у INT8 ниже: mAP50-95 около <b>0.663</b> против <b>0.679</b> у FP16.</p>
+        <p>Вывод: INT8 полезен по размеру файла, но для маленькой YOLO11n на RTX 4070 при batch=1 лучший вариант  <b>TensorRT FP16</b>.</p>
+    </div>
+    
+<h2>Визуальные предсказания</h2>
+<div class='grid'><div class='image-card'><h3>PyTorch</h3><a href='../results/predictions/pytorch/005298_jpg.rf.647d148af5d961d8bbc041f172247170.jpg'><img src='../results/predictions/pytorch/005298_jpg.rf.647d148af5d961d8bbc041f172247170.jpg'></a><p class='muted'>results\predictions\pytorch\005298_jpg.rf.647d148af5d961d8bbc041f172247170.jpg</p></div>
+<div class='image-card'><h3>ONNX Runtime CUDA</h3><a href='../results/predictions/onnx/005298_jpg.rf.647d148af5d961d8bbc041f172247170.jpg'><img src='../results/predictions/onnx/005298_jpg.rf.647d148af5d961d8bbc041f172247170.jpg'></a><p class='muted'>results\predictions\onnx\005298_jpg.rf.647d148af5d961d8bbc041f172247170.jpg</p></div>
+<div class='image-card'><h3>TensorRT FP16</h3><a href='../results/predictions/tensorrt_fp16/005298_jpg.rf.647d148af5d961d8bbc041f172247170.jpg'><img src='../results/predictions/tensorrt_fp16/005298_jpg.rf.647d148af5d961d8bbc041f172247170.jpg'></a><p class='muted'>results\predictions\tensorrt_fp16\005298_jpg.rf.647d148af5d961d8bbc041f172247170.jpg</p></div>
+<div class='image-card'><h3>TensorRT INT8</h3><a href='../results/predictions/tensorrt_int8/005298_jpg.rf.647d148af5d961d8bbc041f172247170.jpg'><img src='../results/predictions/tensorrt_int8/005298_jpg.rf.647d148af5d961d8bbc041f172247170.jpg'></a><p class='muted'>results\predictions\tensorrt_int8\005298_jpg.rf.647d148af5d961d8bbc041f172247170.jpg</p></div></div>
+<h2>ONNX graph analysis</h2>
+<details open><summary>ONNX original graph operators</summary>
+<pre>model: D:\YOLOPractice\results\models\helmet_yolo11n.onnx
+file_size_mb: 10.11
+nodes: 318
+inputs: 1
+outputs: 1
+
+operators:
+Conv: 88
+Mul: 78
+Sigmoid: 77
+Concat: 21
+Add: 16
+Reshape: 11
+Split: 10
+MaxPool: 3
+Transpose: 3
+MatMul: 2
+Softmax: 2
+Resize: 2
+Slice: 2
+Sub: 2
+Div: 1</pre>
+</details>
+<details><summary>ONNX Runtime optimized graph operators</summary>
+<pre>model: D:\YOLOPractice\results\models\helmet_yolo11n_ort_optimized.onnx
+file_size_mb: 10.09
+nodes: 238
+inputs: 1
+outputs: 1
+
+operators:
+Conv: 88
+QuickGelu: 76
+Concat: 21
+Add: 16
+Split: 11
+Reshape: 11
+MaxPool: 3
+FusedMatMul: 2
+Softmax: 2
+Resize: 2
+Sub: 2
+Transpose: 1
+Div: 1
+Mul: 1
+Sigmoid: 1</pre>
+</details>
+<h2>TensorRT engine analysis</h2>
+<details open><summary>TensorRT FP16 engine info</summary>
+<pre>model: D:\YOLOPractice\results\models\helmet_yolo11n_fp16.engine
+file_size_mb: 7.98
+
+note:
+TensorRT .engine files are environment-specific.
+They depend on TensorRT version, CUDA version, GPU architecture and driver.
+The engine was successfully executed during Ultralytics benchmark.
+If TensorRT EngineInspector cannot deserialize it separately, the error is saved below.</pre>
+</details>
+<details open><summary>TensorRT INT8 engine info</summary>
+<pre>model: D:\YOLOPractice\results\models\helmet_yolo11n_int8.engine
+file_size_mb: 4.25
+
+note:
+TensorRT .engine files are environment-specific.
+They depend on TensorRT version, CUDA version, GPU architecture and driver.
+The engine was successfully executed during Ultralytics benchmark.
+If TensorRT EngineInspector cannot deserialize it separately, the error is saved below.</pre>
+</details>
+<h2>Файлы результатов</h2>
+<div class='card links'>
+<a href='../results/benchmark_summary.csv'>benchmark_summary.csv</a>
+<a href='../results/benchmark_runtime_repeated.csv'>benchmark_runtime_repeated.csv</a>
+<a href='../RUNTIME_ANALYSIS.md'>RUNTIME_ANALYSIS.md</a>
+<a href='../runtime_graphs/onnx_original_ops.txt'>onnx_original_ops.txt</a>
+<a href='../runtime_graphs/onnx_ort_optimized_ops.txt'>onnx_ort_optimized_ops.txt</a>
+<a href='../runtime_graphs/tensorrt_fp16_engine_info.txt'>tensorrt_fp16_engine_info.txt</a>
+<a href='../runtime_graphs/tensorrt_int8_engine_info.txt'>tensorrt_int8_engine_info.txt</a>
+</div>
+</main>
+</body>
+</html>

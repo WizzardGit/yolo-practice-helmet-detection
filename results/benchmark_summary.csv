@@ -1,0 +1,5 @@
+runtime,repeats,inference_ms_values,inference_ms_mean,inference_ms_median,inference_ms_min,inference_ms_max,precision_mean,recall_mean,mAP50_mean,mAP50-95_mean
+PyTorch,5,6.366 / 6.944 / 4.135 / 3.66 / 3.761,4.973,4.135,3.66,6.944,0.9635,0.9343,0.981,0.6785
+ONNX Runtime CUDA,5,3.269 / 3.183 / 2.897 / 2.916 / 2.872,3.027,2.916,2.872,3.269,0.9604,0.9368,0.9808,0.6789
+TensorRT FP16,5,1.464 / 1.47 / 1.484 / 1.55 / 1.457,1.485,1.47,1.457,1.55,0.9604,0.9369,0.9809,0.6786
+TensorRT INT8,5,1.518 / 1.525 / 1.529 / 1.526 / 1.531,1.526,1.526,1.518,1.531,0.9596,0.9318,0.9778,0.6625

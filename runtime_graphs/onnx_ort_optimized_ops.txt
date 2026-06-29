@@ -1,0 +1,22 @@
+model: D:\YOLOPractice\results\models\helmet_yolo11n_ort_optimized.onnx
+file_size_mb: 10.09
+nodes: 238
+inputs: 1
+outputs: 1
+
+operators:
+Conv: 88
+QuickGelu: 76
+Concat: 21
+Add: 16
+Split: 11
+Reshape: 11
+MaxPool: 3
+FusedMatMul: 2
+Softmax: 2
+Resize: 2
+Sub: 2
+Transpose: 1
+Div: 1
+Mul: 1
+Sigmoid: 1

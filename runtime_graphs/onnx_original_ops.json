@@ -1,0 +1,17 @@
+{
+  "Conv": 88,
+  "Sigmoid": 77,
+  "Mul": 78,
+  "Split": 10,
+  "Add": 16,
+  "Concat": 21,
+  "MaxPool": 3,
+  "Reshape": 11,
+  "Transpose": 3,
+  "MatMul": 2,
+  "Softmax": 2,
+  "Resize": 2,
+  "Slice": 2,
+  "Sub": 2,
+  "Div": 1
+}
