@@ -1,0 +1,19 @@
+﻿{
+  "status": "not_run",
+  "reason": "trtexec.exe was not found in PATH or common TensorRT folders on this Windows machine.",
+  "checked_commands": [
+    "where.exe trtexec",
+    "Get-ChildItem C:\\Program Files, C:\\TensorRT, D:\\TensorRT, D:\\ -Filter trtexec.exe -Recurse"
+  ],
+  "what_was_done_instead": [
+    "TensorRT FP16 and INT8 engines were benchmarked through Ultralytics validation.",
+    "TensorRT FP16/INT8 latency and mAP are reported in results/benchmark_summary.csv.",
+    "TensorRT engine info files are stored in runtime_graphs.",
+    "A reproducible script was added: scripts/profile_tensorrt_trtexec.py"
+  ],
+  "how_to_run_when_trtexec_is_available": [
+    ".venv\\Scripts\\python.exe scripts\\profile_tensorrt_trtexec.py --engine results\\models\\helmet_yolo11n_fp16.engine --prefix tensorrt_fp16 --trtexec C:\\path\\to\\trtexec.exe",
+    ".venv\\Scripts\\python.exe scripts\\profile_tensorrt_trtexec.py --engine results\\models\\helmet_yolo11n_int8.engine --prefix tensorrt_int8 --trtexec C:\\path\\to\\trtexec.exe"
+  ],
+  "important_note": "Deep TensorRT per-layer profiling requires NVIDIA TensorRT tools / trtexec or trt-engine-explorer. These tools were not present in the current local environment, so the repository contains a reproducible profiling script and an explicit not-run artifact."
+}

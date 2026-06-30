@@ -1,0 +1,319 @@
+﻿{
+    "created_at":  "2026-06-30T13:33:41",
+    "model_path":  "results\\models\\helmet_yolo11n.onnx",
+    "profile_type":  "ONNX Runtime JSON trace",
+    "analysis_level":  "runtime profiling, not just static operator count",
+    "iterations":  100,
+    "warmup":  5,
+    "input_name":  "images",
+    "input_shape_from_model":  [
+                                   "1",
+                                   "3",
+                                   "640",
+                                   "640"
+                               ],
+    "profiling_shape":  [
+                            1,
+                            3,
+                            640,
+                            640
+                        ],
+    "total_wall_time_sec":  0.6849980000406504,
+    "avg_wall_time_ms":  6.849980000406504,
+    "onnxruntime_version":  "1.26.0",
+    "torch_version":  "2.12.1+cu126",
+    "torch_cuda":  "12.6",
+    "torch_cudnn":  91002,
+    "available_providers":  [
+                                "TensorrtExecutionProvider",
+                                "CUDAExecutionProvider",
+                                "CPUExecutionProvider"
+                            ],
+    "active_session_providers":  [
+                                     "CUDAExecutionProvider",
+                                     "CPUExecutionProvider"
+                                 ],
+    "cuda_execution_provider_started":  true,
+    "important_note":  "то runtime profiling evidence: JSON-трасса ONNX Runtime с реально выполненными событиями/узлами и длительностями. тот файл дополняет structural-анализ ONNX-графа по operator counts. Wall-time здесь измерен с включённым profiling на random input, поэтому он не заменяет основной repeated validation benchmark из results/benchmark_summary.csv.",
+    "node_event_count":  24990,
+    "top_nodes_by_duration_ms":  [
+                                     {
+                                         "name":  "/model.0/conv/Conv_kernel_time",
+                                         "node_name":  "0",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  63.269
+                                     },
+                                     {
+                                         "name":  "/model.2/m.0/Add_kernel_time",
+                                         "node_name":  "16",
+                                         "op_name":  "Add",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  40.597
+                                     },
+                                     {
+                                         "name":  "/model.2/cv1/conv/Conv_kernel_time",
+                                         "node_name":  "6",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  27.707
+                                     },
+                                     {
+                                         "name":  "/model.2/m.0/cv1/conv/Conv_kernel_time",
+                                         "node_name":  "10",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  15.065
+                                     },
+                                     {
+                                         "name":  "/model.11/Resize_kernel_time",
+                                         "node_name":  "145",
+                                         "op_name":  "Resize",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  10.686
+                                     },
+                                     {
+                                         "name":  "/model.9/m/MaxPool_kernel_time",
+                                         "node_name":  "110",
+                                         "op_name":  "MaxPool",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  8.485
+                                     },
+                                     {
+                                         "name":  "/model.3/conv/Conv_kernel_time",
+                                         "node_name":  "21",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  5.718
+                                     },
+                                     {
+                                         "name":  "/model.23/dfl/conv/Conv_kernel_time",
+                                         "node_name":  "303",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  5.541
+                                     },
+                                     {
+                                         "name":  "/model.10/m/m.0/attn/pe/conv/Conv_kernel_time",
+                                         "node_name":  "127",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  4.366
+                                     },
+                                     {
+                                         "name":  "/model.2/cv2/conv/Conv_kernel_time",
+                                         "node_name":  "18",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  2.767
+                                     },
+                                     {
+                                         "name":  "/model.10/m/m.0/attn/Softmax_kernel_time",
+                                         "node_name":  "129",
+                                         "op_name":  "Softmax",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  2.216
+                                     },
+                                     {
+                                         "name":  "/model.8/m.0/m/m.1/cv1/conv/Conv_kernel_time",
+                                         "node_name":  "94",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.402
+                                     },
+                                     {
+                                         "name":  "/model.13/cv1/conv/Conv_kernel_time",
+                                         "node_name":  "147",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.348
+                                     },
+                                     {
+                                         "name":  "/model.23/cv2.0/cv2.0.0/conv/Conv_kernel_time",
+                                         "node_name":  "180",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.348
+                                     },
+                                     {
+                                         "name":  "/model.22/m.0/m/m.1/cv1/conv/Conv_kernel_time",
+                                         "node_name":  "263",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.292
+                                     },
+                                     {
+                                         "name":  "/model.4/cv1/conv/Conv_kernel_time",
+                                         "node_name":  "24",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.203
+                                     },
+                                     {
+                                         "name":  "/model.2/m.0/cv2/conv/Conv_kernel_time",
+                                         "node_name":  "13",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.201
+                                     },
+                                     {
+                                         "name":  "/model.23/cv2.1/cv2.1.2/Conv_kernel_time",
+                                         "node_name":  "239",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.155
+                                     },
+                                     {
+                                         "name":  "/model.10/cv1/conv/Conv_kernel_time",
+                                         "node_name":  "117",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.14
+                                     },
+                                     {
+                                         "name":  "/model.13/m.0/cv1/conv/Conv_kernel_time",
+                                         "node_name":  "151",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.085
+                                     },
+                                     {
+                                         "name":  "/model.22/m.0/m/m.0/cv2/conv/Conv_kernel_time",
+                                         "node_name":  "259",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.074
+                                     },
+                                     {
+                                         "name":  "/model.22/cv1/conv/Conv_kernel_time",
+                                         "node_name":  "232",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.067
+                                     },
+                                     {
+                                         "name":  "/model.10/m/m.0/attn/proj/conv/Conv_kernel_time",
+                                         "node_name":  "134",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.055
+                                     },
+                                     {
+                                         "name":  "/model.4/m.0/cv1/conv/Conv_kernel_time",
+                                         "node_name":  "28",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.031
+                                     },
+                                     {
+                                         "name":  "/model.9/cv2/conv/Conv_kernel_time",
+                                         "node_name":  "114",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  1.006
+                                     },
+                                     {
+                                         "name":  "/model.6/m.0/m/m.0/cv2/conv/Conv_kernel_time",
+                                         "node_name":  "55",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  0.991
+                                     },
+                                     {
+                                         "name":  "/model.4/cv2/conv/Conv_kernel_time",
+                                         "node_name":  "36",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  0.982
+                                     },
+                                     {
+                                         "name":  "/model.23/cv2.2/cv2.2.2/Conv_kernel_time",
+                                         "node_name":  "290",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  0.979
+                                     },
+                                     {
+                                         "name":  "/model.1/conv/Conv_kernel_time",
+                                         "node_name":  "3",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  0.975
+                                     },
+                                     {
+                                         "name":  "/model.8/m.0/m/m.0/cv2/conv/Conv_kernel_time",
+                                         "node_name":  "90",
+                                         "op_name":  "Conv",
+                                         "provider":  "CUDAExecutionProvider",
+                                         "duration_ms":  0.974
+                                     }
+                                 ],
+    "top_ops_by_total_duration_ms":  [
+                                         {
+                                             "op_name":  "Conv",
+                                             "total_duration_ms":  457.8059999999998
+                                         },
+                                         {
+                                             "op_name":  "QuickGelu",
+                                             "total_duration_ms":  120.1370000000053
+                                         },
+                                         {
+                                             "op_name":  "Add",
+                                             "total_duration_ms":  68.21400000000114
+                                         },
+                                         {
+                                             "op_name":  "Concat",
+                                             "total_duration_ms":  61.20999999999976
+                                         },
+                                         {
+                                             "op_name":  "Split",
+                                             "total_duration_ms":  25.340999999999696
+                                         },
+                                         {
+                                             "op_name":  "Reshape",
+                                             "total_duration_ms":  16.772999999999925
+                                         },
+                                         {
+                                             "op_name":  "Resize",
+                                             "total_duration_ms":  15.186999999999996
+                                         },
+                                         {
+                                             "op_name":  "MaxPool",
+                                             "total_duration_ms":  14.812999999999997
+                                         },
+                                         {
+                                             "op_name":  "Softmax",
+                                             "total_duration_ms":  6.940999999999986
+                                         },
+                                         {
+                                             "op_name":  "FusedMatMul",
+                                             "total_duration_ms":  6.7679999999999945
+                                         },
+                                         {
+                                             "op_name":  "Sub",
+                                             "total_duration_ms":  3.2699999999999942
+                                         },
+                                         {
+                                             "op_name":  "Sigmoid",
+                                             "total_duration_ms":  2.753999999999999
+                                         },
+                                         {
+                                             "op_name":  "Transpose",
+                                             "total_duration_ms":  2.6649999999999943
+                                         },
+                                         {
+                                             "op_name":  "Mul",
+                                             "total_duration_ms":  1.726999999999999
+                                         },
+                                         {
+                                             "op_name":  "Div",
+                                             "total_duration_ms":  1.7079999999999977
+                                         }
+                                     ],
+    "providers_by_total_duration_ms":  [
+                                           {
+                                               "provider":  "CUDAExecutionProvider",
+                                               "total_duration_ms":  805.3140000000794
+                                           }
+                                       ]
+}

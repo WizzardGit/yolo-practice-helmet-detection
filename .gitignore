@@ -63,3 +63,7 @@ bus.jpg
 !results/benchmark_summary.csv
 !runtime_graphs/
 !runtime_graphs/**
+
+runtime_graphs/*_raw.json
+onnxruntime_profile__*.json
+runtime_graphs/onnx_ort_profile_optimized_model.onnx
