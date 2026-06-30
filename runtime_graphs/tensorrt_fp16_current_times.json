@@ -1,0 +1,7 @@
+{
+  "engine_path": "results\\models\\helmet_yolo11n_fp16_current.engine",
+  "warmup": 10,
+  "iterations": 100,
+  "total_wall_time_ms": 360.3655000915751,
+  "avg_wall_time_ms": 3.603655000915751
+}

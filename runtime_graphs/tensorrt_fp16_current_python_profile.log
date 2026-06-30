@@ -1,0 +1,9 @@
+onnx=results\models\helmet_yolo11n.onnx
+engine=results\models\helmet_yolo11n_fp16_current.engine
+tensorrt_version=11.1.0.106
+gpu=NVIDIA GeForce RTX 4070
+precision_note=current TensorRT build; explicit FP16 builder flag unavailable or disabled
+profiler_attached=True
+raw_layer_record_count=35090
+unique_profiled_layers=319
+avg_wall_time_ms=3.603655000915751

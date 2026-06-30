@@ -1,0 +1,1809 @@
+{
+  "engine_path": "results\\models\\helmet_yolo11n_fp16_current.engine",
+  "profiler_attached": true,
+  "raw_records_count": 35090,
+  "raw_records_sample": [
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.0/conv/Conv",
+      "time_ms": 0.04505600035190582
+    },
+    {
+      "layer": "/model.0/conv/Conv",
+      "time_ms": 0.05119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.0/act/Sigmoid), PWN(/model.0/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl3_0",
+      "time_ms": 0.02252800017595291
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.1/conv/Conv",
+      "time_ms": 0.06860800087451935
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.1/act/Sigmoid), PWN(/model.1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl7_0",
+      "time_ms": 0.027648000046610832
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.2/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.2/cv1/conv/Conv",
+      "time_ms": 0.02969600073993206
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.2/cv1/act/Sigmoid), PWN(/model.2/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl11_0",
+      "time_ms": 0.018432000651955605
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.2/cv1/act/Sigmoid), PWN(/model.2/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.2/m.0/cv1/conv/Conv",
+      "time_ms": 0.043007999658584595
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.2/m.0/cv1/act/Sigmoid), PWN(/model.2/m.0/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl15_0",
+      "time_ms": 0.008191999979317188
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.2/m.0/cv2/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.2/m.0/cv2/conv/Conv",
+      "time_ms": 0.026623999699950218
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl18_0",
+      "time_ms": 0.013311999849975109
+    },
+    {
+      "layer": "/model.2/Split_output_0 copy",
+      "time_ms": 0.023552000522613525
+    },
+    {
+      "layer": "/model.2/Split_output_1 copy",
+      "time_ms": 0.023552000522613525
+    },
+    {
+      "layer": "/model.2/cv2/conv/Conv",
+      "time_ms": 0.04505600035190582
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.2/cv2/act/Sigmoid), PWN(/model.2/cv2/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl23_0",
+      "time_ms": 0.549888014793396
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.3/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.3/conv/Conv",
+      "time_ms": 0.13209599256515503
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl26_0",
+      "time_ms": 0.01228800043463707
+    },
+    {
+      "layer": "/model.4/cv1/conv/Conv",
+      "time_ms": 0.02252800017595291
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl28_0",
+      "time_ms": 0.01228800043463707
+    },
+    {
+      "layer": "/model.4/m.0/cv1/conv/Conv",
+      "time_ms": 0.03481600061058998
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl30_0",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "/model.4/m.0/cv2/conv/Conv",
+      "time_ms": 0.027648000046610832
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl32_0",
+      "time_ms": 0.009216000325977802
+    },
+    {
+      "layer": "/model.4/Split_output_0 copy",
+      "time_ms": 0.014336000196635723
+    },
+    {
+      "layer": "/model.4/Split_output_1 copy",
+      "time_ms": 0.014336000196635723
+    },
+    {
+      "layer": "/model.4/cv2/conv/Conv",
+      "time_ms": 0.04710400104522705
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.4/cv2/act/Sigmoid), PWN(/model.4/cv2/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl37_0",
+      "time_ms": 0.014336000196635723
+    },
+    {
+      "layer": "/model.5/conv/Conv",
+      "time_ms": 0.936959981918335
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.5/act/Sigmoid), PWN(/model.5/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl40_0",
+      "time_ms": 0.008191999979317188
+    },
+    {
+      "layer": "/model.6/cv1/conv/Conv",
+      "time_ms": 0.028672000393271446
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl42_0",
+      "time_ms": 0.008191999979317188
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.6/cv1/act/Sigmoid), PWN(/model.6/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.6/m.0/cv2/conv/Conv || /model.6/m.0/cv1/conv/Conv",
+      "time_ms": 0.023552000522613525
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to /model.6/m.0/cv2/conv/Conv || /model.6/m.0/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl46_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "/model.6/m.0/m/m.0/cv1/conv/Conv",
+      "time_ms": 0.02457600086927414
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl48_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.6/m.0/m/m.0/cv2/conv/Conv",
+      "time_ms": 0.023552000522613525
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(/model.6/m.0/m/m.0/cv2/act/Sigmoid), PWN(/model.6/m.0/m/m.0/cv2/act/Mul)), PWN(/model.6/m.0/m/m.0/Add))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 1 to PWN(PWN(PWN(/model.6/m.0/m/m.0/cv2/act/Sigmoid), PWN(/model.6/m.0/m/m.0/cv2/act/Mul)), PWN(/model.6/m.0/m/m.0/Add))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl52_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(PWN(/model.6/m.0/m/m.0/cv2/act/Sigmoid), PWN(/model.6/m.0/m/m.0/cv2/act/Mul)), PWN(/model.6/m.0/m/m.0/Add))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.6/m.0/m/m.1/cv1/conv/Conv",
+      "time_ms": 0.023552000522613525
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl55_0",
+      "time_ms": 0.01651199907064438
+    },
+    {
+      "layer": "/model.6/m.0/m/m.1/cv2/conv/Conv",
+      "time_ms": 0.023552000522613525
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl57_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl58_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.6/m.0/cv3/conv/Conv",
+      "time_ms": 0.01740800030529499
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl60_0",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "/model.6/Split_output_0 copy",
+      "time_ms": 0.009216000325977802
+    },
+    {
+      "layer": "/model.6/Split_output_1 copy",
+      "time_ms": 0.009216000325977802
+    },
+    {
+      "layer": "/model.6/cv2/conv/Conv",
+      "time_ms": 0.03379200026392937
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl64_0",
+      "time_ms": 0.008191999979317188
+    },
+    {
+      "layer": "/model.7/conv/Conv",
+      "time_ms": 0.12800000607967377
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.7/act/Sigmoid), PWN(/model.7/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl67_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.8/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.8/cv1/conv/Conv",
+      "time_ms": 0.035840000957250595
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.8/cv1/act/Sigmoid), PWN(/model.8/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl71_0",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.8/cv1/act/Sigmoid), PWN(/model.8/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.8/m.0/cv2/conv/Conv || /model.8/m.0/cv1/conv/Conv",
+      "time_ms": 0.016383999958634377
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to /model.8/m.0/cv2/conv/Conv || /model.8/m.0/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl75_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.8/m.0/m/m.0/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.8/m.0/m/m.0/cv1/conv/Conv",
+      "time_ms": 0.03686400130391121
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.8/m.0/m/m.0/cv1/act/Sigmoid), PWN(/model.8/m.0/m/m.0/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl79_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.8/m.0/m/m.0/cv2/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.8/m.0/m/m.0/cv2/conv/Conv",
+      "time_ms": 0.03686400130391121
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(/model.8/m.0/m/m.0/cv2/act/Sigmoid), PWN(/model.8/m.0/m/m.0/cv2/act/Mul)), PWN(/model.8/m.0/m/m.0/Add))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl83_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.8/m.0/m/m.1/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.8/m.0/m/m.1/cv1/conv/Conv",
+      "time_ms": 0.035840000957250595
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.8/m.0/m/m.1/cv1/act/Sigmoid), PWN(/model.8/m.0/m/m.1/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl87_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.8/m.0/m/m.1/cv2/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.8/m.0/m/m.1/cv2/conv/Conv",
+      "time_ms": 0.035840000957250595
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl90_0",
+      "time_ms": 0.013663999736309052
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(/model.8/m.0/m/m.1/cv2/act/Sigmoid), PWN(/model.8/m.0/m/m.1/cv2/act/Mul)), PWN(/model.8/m.0/m/m.1/Add))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl92_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.8/m.0/cv3/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.8/m.0/cv3/conv/Conv",
+      "time_ms": 0.016383999958634377
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.8/m.0/cv3/act/Sigmoid), PWN(/model.8/m.0/cv3/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl96_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.8/Split_output_0 copy",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "/model.8/Split_output_1 copy",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.8/cv2/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.8/cv2/conv/Conv",
+      "time_ms": 0.03379200026392937
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.8/cv2/act/Sigmoid), PWN(/model.8/cv2/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl102_0",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.9/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.9/cv1/conv/Conv",
+      "time_ms": 0.01945599913597107
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to /model.9/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.9/m/MaxPool",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.9/m/MaxPool",
+      "time_ms": 0.016383999958634377
+    },
+    {
+      "layer": "/model.9/m_1/MaxPool",
+      "time_ms": 0.016383999958634377
+    },
+    {
+      "layer": "/model.9/m_2/MaxPool",
+      "time_ms": 0.015359999611973763
+    },
+    {
+      "layer": "/model.9/cv1/conv/Conv_output_0 copy",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "/model.9/m/MaxPool_output_0 copy",
+      "time_ms": 0.016736000776290894
+    },
+    {
+      "layer": "/model.9/m_1/MaxPool_output_0 copy",
+      "time_ms": 0.007840000092983246
+    },
+    {
+      "layer": "/model.9/cv2/conv/Conv",
+      "time_ms": 0.03993599861860275
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.9/cv2/act/Sigmoid), PWN(/model.9/cv2/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl115_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.10/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.10/cv1/conv/Conv",
+      "time_ms": 0.025599999353289604
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.10/cv1/act/Sigmoid), PWN(/model.10/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl119_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.10/cv1/act/Sigmoid), PWN(/model.10/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.10/Split_13",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.10/m/m.0/attn/qkv/conv/Conv",
+      "time_ms": 0.027648000046610832
+    },
+    {
+      "layer": "/model.10/m/m.0/attn/Reshape",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.10/m/m.0/attn/Split_18",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "/model.10/m/m.0/attn/Reshape_2",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.10/m/m.0/attn/pe/conv/Conv",
+      "time_ms": 0.009216000325977802
+    },
+    {
+      "layer": "__myl_MoveSlicSlicTran_myl127_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.10/m/m.0/attn/MatMul_myl127_1",
+      "time_ms": 0.02252800017595291
+    },
+    {
+      "layer": "__myl_MulMaxrSubExpSumDiv_myl127_2",
+      "time_ms": 0.013311999849975109
+    },
+    {
+      "layer": "__myl_Tran_myl127_3",
+      "time_ms": 0.023552000522613525
+    },
+    {
+      "layer": "/model.10/m/m.0/attn/MatMul_1_myl127_4",
+      "time_ms": 0.026623999699950218
+    },
+    {
+      "layer": "__myl_Add_myl127_5",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.10/m/m.0/attn/proj/conv/Conv + /model.10/m/m.0/Add",
+      "time_ms": 0.023552000522613525
+    },
+    {
+      "layer": "/model.10/m/m.0/ffn/ffn.0/conv/Conv",
+      "time_ms": 0.027648000046610832
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl130_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.10/m/m.0/ffn/ffn.1/conv/Conv + /model.10/m/m.0/Add_1",
+      "time_ms": 0.03174399957060814
+    },
+    {
+      "layer": "/model.10/Split_output_0 copy",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "/model.10/m/m.0/Add_1_output_0 copy",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "/model.10/cv2/conv/Conv",
+      "time_ms": 0.03686400130391121
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl135_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.11/Resize",
+      "time_ms": 0.02252800017595291
+    },
+    {
+      "layer": "/model.11/Resize_output_0 copy",
+      "time_ms": 0.010239999741315842
+    },
+    {
+      "layer": "/model.13/cv1/conv/Conv",
+      "time_ms": 0.05427199974656105
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl139_0",
+      "time_ms": 0.009216000325977802
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.13/cv1/act/Sigmoid), PWN(/model.13/cv1/act/Mul))",
+      "time_ms": 0.008191999979317188
+    },
+    {
+      "layer": "/model.13/m.0/cv1/conv/Conv",
+      "time_ms": 0.04198399931192398
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl142_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "/model.13/m.0/cv2/conv/Conv",
+      "time_ms": 0.026623999699950218
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl144_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.13/Split_output_0 copy",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "/model.13/Split_output_1 copy",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.13/cv2/conv/Conv",
+      "time_ms": 0.048128001391887665
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl148_0",
+      "time_ms": 0.008191999979317188
+    },
+    {
+      "layer": "/model.14/Resize",
+      "time_ms": 0.018432000651955605
+    },
+    {
+      "layer": "/model.14/Resize_output_0 copy",
+      "time_ms": 0.03203200176358223
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.16/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.16/cv1/conv/Conv",
+      "time_ms": 0.06860800087451935
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl153_0",
+      "time_ms": 0.01228800043463707
+    },
+    {
+      "layer": "/model.16/m.0/cv1/conv/Conv",
+      "time_ms": 0.03481600061058998
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl155_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.16/m.0/cv2/conv/Conv",
+      "time_ms": 0.026623999699950218
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl157_0",
+      "time_ms": 0.008191999979317188
+    },
+    {
+      "layer": "/model.16/Split_output_0 copy",
+      "time_ms": 0.014336000196635723
+    },
+    {
+      "layer": "/model.16/Split_output_1 copy",
+      "time_ms": 0.014336000196635723
+    },
+    {
+      "layer": "/model.16/cv2/conv/Conv",
+      "time_ms": 0.04095999896526337
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl161_0",
+      "time_ms": 0.01228800043463707
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.16/cv2/act/Sigmoid), PWN(/model.16/cv2/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv3.0/cv3.0.0/cv3.0.0.0/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv3.0/cv3.0.0/cv3.0.0.0/conv/Conv",
+      "time_ms": 0.02252800017595291
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv2.0/cv2.0.0/conv/Conv",
+      "time_ms": 0.011264000087976456
+    },
+    {
+      "layer": "/model.23/cv2.0/cv2.0.0/conv/Conv",
+      "time_ms": 0.17817600071430206
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.17/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.17/conv/Conv",
+      "time_ms": 0.055296000093221664
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl169_0",
+      "time_ms": 0.01228800043463707
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.23/cv2.0/cv2.0.0/act/Sigmoid), PWN(/model.23/cv2.0/cv2.0.0/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl171_0",
+      "time_ms": 0.011264000087976456
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl172_0",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "/model.13/cv2/act/Mul_output_0 copy",
+      "time_ms": 0.008191999979317188
+    },
+    {
+      "layer": "/model.19/cv1/conv/Conv",
+      "time_ms": 0.060416001826524734
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv2.0/cv2.0.1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv2.0/cv2.0.1/conv/Conv",
+      "time_ms": 0.10547199845314026
+    },
+    {
+      "layer": "/model.23/cv3.0/cv3.0.0/cv3.0.0.1/conv/Conv",
+      "time_ms": 0.02252800017595291
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl178_0",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.23/cv2.0/cv2.0.1/act/Sigmoid), PWN(/model.23/cv2.0/cv2.0.1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl180_0",
+      "time_ms": 0.010239999741315842
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl181_0",
+      "time_ms": 0.01228800043463707
+    },
+    {
+      "layer": "/model.23/cv3.0/cv3.0.1/cv3.0.1.0/conv/Conv",
+      "time_ms": 0.03411199897527695
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv2.0/cv2.0.2/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv2.0/cv2.0.2/Conv",
+      "time_ms": 0.03481600061058998
+    },
+    {
+      "layer": "/model.19/m.0/cv1/conv/Conv",
+      "time_ms": 0.04095999896526337
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl186_0",
+      "time_ms": 0.01228800043463707
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl187_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "/model.19/m.0/cv2/conv/Conv",
+      "time_ms": 0.027648000046610832
+    },
+    {
+      "layer": "/model.23/cv3.0/cv3.0.1/cv3.0.1.1/conv/Conv",
+      "time_ms": 0.021503999829292297
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl190_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.19/Split_output_0 copy",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.19/Split_output_1 copy",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl193_0",
+      "time_ms": 0.01228800043463707
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv3.0/cv3.0.2/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv3.0/cv3.0.2/Conv",
+      "time_ms": 0.013311999849975109
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/Reshape_3",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/Reshape_3",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/Reshape_3_copy_output",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "/model.19/cv2/conv/Conv",
+      "time_ms": 0.19763199985027313
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl200_0",
+      "time_ms": 0.008191999979317188
+    },
+    {
+      "layer": "/model.23/cv3.1/cv3.1.0/cv3.1.0.0/conv/Conv",
+      "time_ms": 0.013311999849975109
+    },
+    {
+      "layer": "/model.23/cv2.1/cv2.1.0/conv/Conv",
+      "time_ms": 0.06963200122117996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.20/conv/Conv",
+      "time_ms": 0.009216000325977802
+    },
+    {
+      "layer": "/model.20/conv/Conv",
+      "time_ms": 0.09523200243711472
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl205_0",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.23/cv2.1/cv2.1.0/act/Sigmoid), PWN(/model.23/cv2.1/cv2.1.0/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl207_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl208_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "/model.10/cv2/act/Mul_output_0 copy",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.22/cv1/conv/Conv",
+      "time_ms": 0.03379200026392937
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv2.1/cv2.1.1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv2.1/cv2.1.1/conv/Conv",
+      "time_ms": 0.04095999896526337
+    },
+    {
+      "layer": "/model.23/cv3.1/cv3.1.0/cv3.1.0.1/conv/Conv",
+      "time_ms": 0.027648000046610832
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/cv1/act/Sigmoid), PWN(/model.22/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl216_0",
+      "time_ms": 0.23180800676345825
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.22/cv1/act/Sigmoid), PWN(/model.22/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.23/cv2.1/cv2.1.1/act/Sigmoid), PWN(/model.23/cv2.1/cv2.1.1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl219_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.23/cv3.1/cv3.1.0/cv3.1.0.1/act/Sigmoid), PWN(/model.23/cv3.1/cv3.1.0/cv3.1.0.1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl221_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv3.1/cv3.1.1/cv3.1.1.0/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv3.1/cv3.1.1/cv3.1.1.0/conv/Conv",
+      "time_ms": 0.010239999741315842
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv2.1/cv2.1.2/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv2.1/cv2.1.2/Conv",
+      "time_ms": 0.02252800017595291
+    },
+    {
+      "layer": "/model.22/m.0/cv2/conv/Conv || /model.22/m.0/cv1/conv/Conv",
+      "time_ms": 0.015359999611973763
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to /model.22/m.0/cv2/conv/Conv || /model.22/m.0/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.23/cv3.1/cv3.1.1/cv3.1.1.0/act/Sigmoid), PWN(/model.23/cv3.1/cv3.1.1/cv3.1.1.0/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl229_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl230_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/m.0/m/m.0/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.22/m.0/m/m.0/cv1/conv/Conv",
+      "time_ms": 0.03686400130391121
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv3.1/cv3.1.1/cv3.1.1.1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv3.1/cv3.1.1/cv3.1.1.1/conv/Conv",
+      "time_ms": 0.01945599913597107
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/m.0/m/m.0/cv1/act/Sigmoid), PWN(/model.22/m.0/m/m.0/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl236_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.23/cv3.1/cv3.1.1/cv3.1.1.1/act/Sigmoid), PWN(/model.23/cv3.1/cv3.1.1/cv3.1.1.1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl238_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv3.1/cv3.1.2/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv3.1/cv3.1.2/Conv",
+      "time_ms": 0.014336000196635723
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/Reshape_4",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/Reshape_4",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/Reshape_4_copy_output",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/m.0/m/m.0/cv2/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.22/m.0/m/m.0/cv2/conv/Conv",
+      "time_ms": 0.035840000957250595
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(/model.22/m.0/m/m.0/cv2/act/Sigmoid), PWN(/model.22/m.0/m/m.0/cv2/act/Mul)), PWN(/model.22/m.0/m/m.0/Add))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl247_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/m.0/m/m.1/cv1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.22/m.0/m/m.1/cv1/conv/Conv",
+      "time_ms": 0.035840000957250595
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/m.0/m/m.1/cv1/act/Sigmoid), PWN(/model.22/m.0/m/m.1/cv1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl251_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/m.0/m/m.1/cv2/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.22/m.0/m/m.1/cv2/conv/Conv",
+      "time_ms": 0.035840000957250595
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl254_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(/model.22/m.0/m/m.1/cv2/act/Sigmoid), PWN(/model.22/m.0/m/m.1/cv2/act/Mul)), PWN(/model.22/m.0/m/m.1/Add))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl256_0",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/m.0/cv3/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.22/m.0/cv3/conv/Conv",
+      "time_ms": 0.016383999958634377
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/m.0/cv3/act/Sigmoid), PWN(/model.22/m.0/cv3/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl260_0",
+      "time_ms": 0.26015999913215637
+    },
+    {
+      "layer": "/model.22/Split_output_0 copy",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "/model.22/Split_output_1 copy",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/cv2/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.22/cv2/conv/Conv",
+      "time_ms": 0.03379200026392937
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/cv2/act/Sigmoid), PWN(/model.22/cv2/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl266_0",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.22/cv2/act/Sigmoid), PWN(/model.22/cv2/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv3.2/cv3.2.0/cv3.2.0.0/conv/Conv",
+      "time_ms": 0.01228800043463707
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv2.2/cv2.2.0/conv/Conv",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "/model.23/cv2.2/cv2.2.0/conv/Conv",
+      "time_ms": 0.08908800035715103
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.23/cv3.2/cv3.2.0/cv3.2.0.0/act/Sigmoid), PWN(/model.23/cv3.2/cv3.2.0/cv3.2.0.0/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl272_0",
+      "time_ms": 0.0071680000983178616
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl273_0",
+      "time_ms": 0.004095999989658594
+    },
+    {
+      "layer": "/model.23/cv2.2/cv2.2.1/conv/Conv",
+      "time_ms": 0.03276799991726875
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv3.2/cv3.2.0/cv3.2.0.1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv3.2/cv3.2.0/cv3.2.0.1/conv/Conv",
+      "time_ms": 0.015359999611973763
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl277_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.23/cv3.2/cv3.2.0/cv3.2.0.1/act/Sigmoid), PWN(/model.23/cv3.2/cv3.2.0/cv3.2.0.1/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl279_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv3.2/cv3.2.1/cv3.2.1.0/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv3.2/cv3.2.1/cv3.2.1.0/conv/Conv",
+      "time_ms": 0.05849599838256836
+    },
+    {
+      "layer": "/model.23/cv2.2/cv2.2.2/Conv",
+      "time_ms": 0.018303999677300453
+    },
+    {
+      "layer": "/model.23/Reshape",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/Reshape_copy_output",
+      "time_ms": 0.010239999741315842
+    },
+    {
+      "layer": "/model.23/Reshape_1",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/Reshape_1_copy_output",
+      "time_ms": 0.006144000217318535
+    },
+    {
+      "layer": "/model.23/Reshape_2",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/Reshape_2_copy_output",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "/model.23/dfl/Reshape + /model.23/dfl/Transpose",
+      "time_ms": 0.02457600086927414
+    },
+    {
+      "layer": "/model.23/dfl/Softmax",
+      "time_ms": 0.020479999482631683
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.23/cv3.2/cv3.2.1/cv3.2.1.0/act/Sigmoid), PWN(/model.23/cv3.2/cv3.2.1/cv3.2.1.0/act/Mul))",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl292_0",
+      "time_ms": 0.005119999870657921
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.23/cv3.2/cv3.2.1/cv3.2.1.1/conv/Conv",
+      "time_ms": 0.0
+    },
+    {
+      "layer": "/model.23/cv3.2/cv3.2.1/cv3.2.1.1/conv/Conv",
+      "time_ms": 0.011264000087976456
+    }
+  ],
+  "top_layers": [
+    {
+      "layer": "/model.5/conv/Conv",
+      "total_time_ms": 15.02400005236268,
+      "calls": 110,
+      "avg_time_ms": 0.13658181865784255
+    },
+    {
+      "layer": "/model.23/cv2.2/cv2.2.0/conv/Conv",
+      "total_time_ms": 8.969279976561666,
+      "calls": 110,
+      "avg_time_ms": 0.08153890887783333
+    },
+    {
+      "layer": "/model.7/conv/Conv",
+      "total_time_ms": 8.241215948015451,
+      "calls": 110,
+      "avg_time_ms": 0.07492014498195865
+    },
+    {
+      "layer": "/model.3/conv/Conv",
+      "total_time_ms": 7.9214081056416035,
+      "calls": 110,
+      "avg_time_ms": 0.07201280096037821
+    },
+    {
+      "layer": "/model.20/conv/Conv",
+      "total_time_ms": 7.249823907390237,
+      "calls": 110,
+      "avg_time_ms": 0.06590749006718397
+    },
+    {
+      "layer": "/model.19/cv1/conv/Conv",
+      "total_time_ms": 7.0451520420610905,
+      "calls": 110,
+      "avg_time_ms": 0.06404683674600992
+    },
+    {
+      "layer": "/model.23/cv2.0/cv2.0.0/conv/Conv",
+      "total_time_ms": 6.926143979653716,
+      "calls": 110,
+      "avg_time_ms": 0.06296494526957924
+    },
+    {
+      "layer": "/model.23/cv2.0/cv2.0.1/conv/Conv",
+      "total_time_ms": 6.796191956847906,
+      "calls": 110,
+      "avg_time_ms": 0.061783563244071873
+    },
+    {
+      "layer": "/model.17/conv/Conv",
+      "total_time_ms": 4.946592131629586,
+      "calls": 110,
+      "avg_time_ms": 0.044969019378450784
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl119_0",
+      "total_time_ms": 4.92793604452163,
+      "calls": 110,
+      "avg_time_ms": 0.04479941858656027
+    },
+    {
+      "layer": "/model.23/cv2.1/cv2.1.0/conv/Conv",
+      "total_time_ms": 4.566048072651029,
+      "calls": 110,
+      "avg_time_ms": 0.04150952793319117
+    },
+    {
+      "layer": "/model.1/conv/Conv",
+      "total_time_ms": 4.5652800761163235,
+      "calls": 110,
+      "avg_time_ms": 0.04150254614651203
+    },
+    {
+      "layer": "/model.16/cv1/conv/Conv",
+      "total_time_ms": 4.470208048820496,
+      "calls": 110,
+      "avg_time_ms": 0.040638254989277235
+    },
+    {
+      "layer": "/model.8/m.0/m/m.0/cv1/conv/Conv",
+      "total_time_ms": 4.283648000098765,
+      "calls": 110,
+      "avg_time_ms": 0.03894225454635241
+    },
+    {
+      "layer": "/model.19/m.0/cv1/conv/Conv",
+      "total_time_ms": 4.2504639914259315,
+      "calls": 110,
+      "avg_time_ms": 0.03864058174023574
+    },
+    {
+      "layer": "/model.10/m/m.0/ffn/ffn.0/conv/Conv",
+      "total_time_ms": 3.74636800121516,
+      "calls": 110,
+      "avg_time_ms": 0.03405789092013782
+    },
+    {
+      "layer": "/model.22/m.0/m/m.1/cv1/conv/Conv",
+      "total_time_ms": 3.6781120197847486,
+      "calls": 110,
+      "avg_time_ms": 0.03343738199804317
+    },
+    {
+      "layer": "/model.6/m.0/cv3/conv/Conv",
+      "total_time_ms": 3.5651519554667175,
+      "calls": 110,
+      "avg_time_ms": 0.03241047232242471
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl205_0",
+      "total_time_ms": 3.5648960606195033,
+      "calls": 110,
+      "avg_time_ms": 0.03240814600563185
+    },
+    {
+      "layer": "/model.13/cv1/conv/Conv",
+      "total_time_ms": 3.526336008682847,
+      "calls": 110,
+      "avg_time_ms": 0.032057600078934975
+    },
+    {
+      "layer": "/model.0/conv/Conv",
+      "total_time_ms": 3.3850559629499912,
+      "calls": 110,
+      "avg_time_ms": 0.030773236026818102
+    },
+    {
+      "layer": "/model.19/cv2/conv/Conv",
+      "total_time_ms": 3.283328049816191,
+      "calls": 110,
+      "avg_time_ms": 0.02984843681651083
+    },
+    {
+      "layer": "/model.4/cv2/conv/Conv",
+      "total_time_ms": 3.2169599682092667,
+      "calls": 110,
+      "avg_time_ms": 0.029245090620084242
+    },
+    {
+      "layer": "/model.13/cv2/conv/Conv",
+      "total_time_ms": 3.216479984112084,
+      "calls": 110,
+      "avg_time_ms": 0.029240727128291674
+    },
+    {
+      "layer": "/model.23/dfl/Softmax",
+      "total_time_ms": 3.215168026275933,
+      "calls": 110,
+      "avg_time_ms": 0.029228800238872116
+    },
+    {
+      "layer": "/model.8/cv1/conv/Conv",
+      "total_time_ms": 3.062399987131357,
+      "calls": 110,
+      "avg_time_ms": 0.027839999883012338
+    },
+    {
+      "layer": "/model.2/cv2/conv/Conv",
+      "total_time_ms": 3.055872021242976,
+      "calls": 110,
+      "avg_time_ms": 0.02778065473857251
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.0/conv/Conv",
+      "total_time_ms": 2.9856320144608617,
+      "calls": 110,
+      "avg_time_ms": 0.02714210922237147
+    },
+    {
+      "layer": "__myl_Mul_myl312_0",
+      "total_time_ms": 2.8408000122290105,
+      "calls": 110,
+      "avg_time_ms": 0.025825454656627368
+    },
+    {
+      "layer": "/model.2/m.0/cv1/conv/Conv",
+      "total_time_ms": 2.821151999756694,
+      "calls": 110,
+      "avg_time_ms": 0.02564683636142449
+    },
+    {
+      "layer": "/model.22/m.0/cv2/conv/Conv || /model.22/m.0/cv1/conv/Conv",
+      "total_time_ms": 2.8009279905818403,
+      "calls": 110,
+      "avg_time_ms": 0.025462981732562184
+    },
+    {
+      "layer": "/model.16/m.0/cv2/conv/Conv",
+      "total_time_ms": 2.7873600013554096,
+      "calls": 110,
+      "avg_time_ms": 0.02533963637595827
+    },
+    {
+      "layer": "/model.23/cv2.1/cv2.1.1/conv/Conv",
+      "total_time_ms": 2.777375982142985,
+      "calls": 110,
+      "avg_time_ms": 0.025248872564936225
+    },
+    {
+      "layer": "/model.2/m.0/cv2/conv/Conv",
+      "total_time_ms": 2.7720960257574916,
+      "calls": 110,
+      "avg_time_ms": 0.025200872961431742
+    },
+    {
+      "layer": "/model.13/m.0/cv1/conv/Conv",
+      "total_time_ms": 2.7453759890049696,
+      "calls": 110,
+      "avg_time_ms": 0.024957963536408813
+    },
+    {
+      "layer": "/model.16/cv2/conv/Conv",
+      "total_time_ms": 2.7434879755601287,
+      "calls": 110,
+      "avg_time_ms": 0.02494079977781935
+    },
+    {
+      "layer": "/model.23/cv3.0/cv3.0.1/cv3.0.1.1/conv/Conv",
+      "total_time_ms": 2.6925760079175234,
+      "calls": 110,
+      "avg_time_ms": 0.02447796370834112
+    },
+    {
+      "layer": "/model.6/m.0/cv2/conv/Conv || /model.6/m.0/cv1/conv/Conv",
+      "total_time_ms": 2.66409601084888,
+      "calls": 110,
+      "avg_time_ms": 0.024219054644080727
+    },
+    {
+      "layer": "/model.9/cv2/conv/Conv",
+      "total_time_ms": 2.6490239650011063,
+      "calls": 110,
+      "avg_time_ms": 0.024082036045464602
+    },
+    {
+      "layer": "/model.8/Split_output_1 copy",
+      "total_time_ms": 2.5817600046284497,
+      "calls": 110,
+      "avg_time_ms": 0.02347054549662227
+    },
+    {
+      "layer": "/model.10/cv2/conv/Conv",
+      "total_time_ms": 2.5372799783945084,
+      "calls": 110,
+      "avg_time_ms": 0.023066181621768257
+    },
+    {
+      "layer": "/model.22/m.0/m/m.0/cv1/conv/Conv",
+      "total_time_ms": 2.503712019883096,
+      "calls": 110,
+      "avg_time_ms": 0.0227610183625736
+    },
+    {
+      "layer": "/model.22/m.0/m/m.0/cv2/conv/Conv",
+      "total_time_ms": 2.4861760642379522,
+      "calls": 110,
+      "avg_time_ms": 0.022601600583981384
+    },
+    {
+      "layer": "/model.8/m.0/m/m.1/cv2/conv/Conv",
+      "total_time_ms": 2.4705600617453456,
+      "calls": 110,
+      "avg_time_ms": 0.02245963692495769
+    },
+    {
+      "layer": "/model.8/m.0/m/m.0/cv2/conv/Conv",
+      "total_time_ms": 2.4518720749765635,
+      "calls": 110,
+      "avg_time_ms": 0.022289746136150576
+    },
+    {
+      "layer": "/model.8/m.0/m/m.1/cv1/conv/Conv",
+      "total_time_ms": 2.4204480769112706,
+      "calls": 110,
+      "avg_time_ms": 0.022004073426466098
+    },
+    {
+      "layer": "/model.22/m.0/m/m.1/cv2/conv/Conv",
+      "total_time_ms": 2.4148160750046372,
+      "calls": 110,
+      "avg_time_ms": 0.021952873409133065
+    },
+    {
+      "layer": "/model.23/cv2.0/cv2.0.2/Conv",
+      "total_time_ms": 2.3329920452088118,
+      "calls": 110,
+      "avg_time_ms": 0.02120901859280738
+    },
+    {
+      "layer": "/model.16/m.0/cv1/conv/Conv",
+      "total_time_ms": 2.292544041760266,
+      "calls": 110,
+      "avg_time_ms": 0.02084130947054787
+    },
+    {
+      "layer": "/model.6/cv2/conv/Conv",
+      "total_time_ms": 2.2802880397066474,
+      "calls": 110,
+      "avg_time_ms": 0.02072989127006043
+    },
+    {
+      "layer": "/model.22/cv1/conv/Conv",
+      "total_time_ms": 2.270528038032353,
+      "calls": 110,
+      "avg_time_ms": 0.0206411639821123
+    },
+    {
+      "layer": "/model.4/m.0/cv1/conv/Conv",
+      "total_time_ms": 2.26956803817302,
+      "calls": 110,
+      "avg_time_ms": 0.020632436710663817
+    },
+    {
+      "layer": "/model.22/cv2/conv/Conv",
+      "total_time_ms": 2.266336035914719,
+      "calls": 110,
+      "avg_time_ms": 0.020603054871951992
+    },
+    {
+      "layer": "/model.8/cv2/conv/Conv",
+      "total_time_ms": 2.2466880306601524,
+      "calls": 110,
+      "avg_time_ms": 0.020424436642365023
+    },
+    {
+      "layer": "/model.23/cv2.2/cv2.2.1/conv/Conv",
+      "total_time_ms": 2.2331840181723237,
+      "calls": 110,
+      "avg_time_ms": 0.02030167289247567
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl23_0",
+      "total_time_ms": 2.2289920253679156,
+      "calls": 110,
+      "avg_time_ms": 0.02026356386698105
+    },
+    {
+      "layer": "/model.10/m/m.0/ffn/ffn.1/conv/Conv + /model.10/m/m.0/Add_1",
+      "total_time_ms": 2.188992009498179,
+      "calls": 110,
+      "avg_time_ms": 0.019899927359074355
+    },
+    {
+      "layer": "/model.2/cv1/conv/Conv",
+      "total_time_ms": 2.0601599803194404,
+      "calls": 110,
+      "avg_time_ms": 0.018728727093813093
+    },
+    {
+      "layer": "/model.23/dfl/conv/Conv",
+      "total_time_ms": 1.9068480199202895,
+      "calls": 110,
+      "avg_time_ms": 0.01733498199927536
+    },
+    {
+      "layer": "/model.23/cv3.1/cv3.1.0/cv3.1.0.1/conv/Conv",
+      "total_time_ms": 1.9037120081484318,
+      "calls": 110,
+      "avg_time_ms": 0.01730647280134938
+    },
+    {
+      "layer": "/model.6/cv1/conv/Conv",
+      "total_time_ms": 1.8790720300748944,
+      "calls": 110,
+      "avg_time_ms": 0.01708247300068086
+    },
+    {
+      "layer": "/model.19/m.0/cv2/conv/Conv",
+      "total_time_ms": 1.871168022044003,
+      "calls": 110,
+      "avg_time_ms": 0.01701061838221821
+    },
+    {
+      "layer": "/model.4/m.0/cv2/conv/Conv",
+      "total_time_ms": 1.86400000564754,
+      "calls": 110,
+      "avg_time_ms": 0.01694545459679582
+    },
+    {
+      "layer": "/model.10/m/m.0/attn/qkv/conv/Conv",
+      "total_time_ms": 1.8542400188744068,
+      "calls": 110,
+      "avg_time_ms": 0.01685672744431279
+    },
+    {
+      "layer": "/model.13/m.0/cv2/conv/Conv",
+      "total_time_ms": 1.8535040114074945,
+      "calls": 110,
+      "avg_time_ms": 0.01685003646734086
+    },
+    {
+      "layer": "/model.10/m/m.0/attn/MatMul_1_myl127_4",
+      "total_time_ms": 1.8109120139852166,
+      "calls": 110,
+      "avg_time_ms": 0.016462836490774697
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl3_0",
+      "total_time_ms": 1.7523200223222375,
+      "calls": 110,
+      "avg_time_ms": 0.01593018202111125
+    },
+    {
+      "layer": "/model.10/cv1/conv/Conv",
+      "total_time_ms": 1.734239997342229,
+      "calls": 110,
+      "avg_time_ms": 0.015765818157656625
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl30_0",
+      "total_time_ms": 1.6739200060255826,
+      "calls": 110,
+      "avg_time_ms": 0.015217454600232569
+    },
+    {
+      "layer": "/model.6/m.0/m/m.1/cv2/conv/Conv",
+      "total_time_ms": 1.6637760419398546,
+      "calls": 110,
+      "avg_time_ms": 0.01512523674490777
+    },
+    {
+      "layer": "/model.6/m.0/m/m.0/cv1/conv/Conv",
+      "total_time_ms": 1.6500800177454948,
+      "calls": 110,
+      "avg_time_ms": 0.015000727434049952
+    },
+    {
+      "layer": "/model.10/m/m.0/attn/proj/conv/Conv + /model.10/m/m.0/Add",
+      "total_time_ms": 1.6491200402379036,
+      "calls": 110,
+      "avg_time_ms": 0.014992000365799124
+    },
+    {
+      "layer": "/model.23/dfl/Reshape + /model.23/dfl/Transpose",
+      "total_time_ms": 1.641600014641881,
+      "calls": 110,
+      "avg_time_ms": 0.014923636496744372
+    },
+    {
+      "layer": "/model.6/m.0/m/m.1/cv1/conv/Conv",
+      "total_time_ms": 1.6134080355986953,
+      "calls": 110,
+      "avg_time_ms": 0.014667345778169957
+    },
+    {
+      "layer": "/model.6/m.0/m/m.0/cv2/conv/Conv",
+      "total_time_ms": 1.611488034017384,
+      "calls": 110,
+      "avg_time_ms": 0.014649891218339855
+    },
+    {
+      "layer": "/model.23/cv3.0/cv3.0.0/cv3.0.0.1/conv/Conv",
+      "total_time_ms": 1.604480030015111,
+      "calls": 110,
+      "avg_time_ms": 0.014586182091046463
+    },
+    {
+      "layer": "/model.2/Split_output_0 copy",
+      "total_time_ms": 1.5984000330790877,
+      "calls": 110,
+      "avg_time_ms": 0.01453090939162807
+    },
+    {
+      "layer": "/model.23/cv3.0/cv3.0.0/cv3.0.0.0/conv/Conv",
+      "total_time_ms": 1.59014402795583,
+      "calls": 110,
+      "avg_time_ms": 0.014455854799598456
+    },
+    {
+      "layer": "/model.23/cv3.0/cv3.0.1/cv3.0.1.0/conv/Conv",
+      "total_time_ms": 1.5731200175359845,
+      "calls": 110,
+      "avg_time_ms": 0.01430109106850895
+    },
+    {
+      "layer": "/model.2/Split_output_1 copy",
+      "total_time_ms": 1.571584024000913,
+      "calls": 110,
+      "avg_time_ms": 0.01428712749091739
+    },
+    {
+      "layer": "/model.4/cv1/conv/Conv",
+      "total_time_ms": 1.558880016207695,
+      "calls": 110,
+      "avg_time_ms": 0.014171636510979045
+    },
+    {
+      "layer": "/model.23/cv2.1/cv2.1.2/Conv",
+      "total_time_ms": 1.541568012908101,
+      "calls": 110,
+      "avg_time_ms": 0.014014254662800919
+    },
+    {
+      "layer": "/model.10/m/m.0/attn/MatMul_myl127_1",
+      "total_time_ms": 1.5196800115518272,
+      "calls": 110,
+      "avg_time_ms": 0.013815272832289338
+    },
+    {
+      "layer": "/model.23/cv3.2/cv3.2.2/Conv",
+      "total_time_ms": 1.4872959684580564,
+      "calls": 110,
+      "avg_time_ms": 0.013520872440527786
+    },
+    {
+      "layer": "/model.9/cv1/conv/Conv",
+      "total_time_ms": 1.3656319812871516,
+      "calls": 110,
+      "avg_time_ms": 0.01241483619351956
+    },
+    {
+      "layer": "/model.23/cv3.1/cv3.1.1/cv3.1.1.1/conv/Conv",
+      "total_time_ms": 1.3518079789355397,
+      "calls": 110,
+      "avg_time_ms": 0.012289163444868544
+    },
+    {
+      "layer": "/model.14/Resize",
+      "total_time_ms": 1.3512959782965481,
+      "calls": 110,
+      "avg_time_ms": 0.012284508893604983
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl7_0",
+      "total_time_ms": 1.3492799778468907,
+      "calls": 110,
+      "avg_time_ms": 0.012266181616789915
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl11_0",
+      "total_time_ms": 1.2973440173082054,
+      "calls": 110,
+      "avg_time_ms": 0.011794036520983686
+    },
+    {
+      "layer": "/model.23/cv2.2/cv2.2.2/Conv",
+      "total_time_ms": 1.2765760296024382,
+      "calls": 110,
+      "avg_time_ms": 0.011605236632749438
+    },
+    {
+      "layer": "/model.14/Resize_output_0 copy",
+      "total_time_ms": 1.206336000468582,
+      "calls": 110,
+      "avg_time_ms": 0.010966690913350745
+    },
+    {
+      "layer": "/model.8/m.0/cv2/conv/Conv || /model.8/m.0/cv1/conv/Conv",
+      "total_time_ms": 1.173952009063214,
+      "calls": 110,
+      "avg_time_ms": 0.010672290991483764
+    },
+    {
+      "layer": "/model.9/m/MaxPool",
+      "total_time_ms": 1.1586880153045058,
+      "calls": 110,
+      "avg_time_ms": 0.010533527411859143
+    },
+    {
+      "layer": "/model.8/m.0/cv3/conv/Conv",
+      "total_time_ms": 1.1541760098189116,
+      "calls": 110,
+      "avg_time_ms": 0.010492509180171923
+    },
+    {
+      "layer": "/model.22/m.0/cv3/conv/Conv",
+      "total_time_ms": 1.1464960095472634,
+      "calls": 110,
+      "avg_time_ms": 0.010422690995884212
+    },
+    {
+      "layer": "/model.9/m_1/MaxPool",
+      "total_time_ms": 1.1395520083606243,
+      "calls": 110,
+      "avg_time_ms": 0.010359563712369312
+    },
+    {
+      "layer": "/model.9/m_2/MaxPool",
+      "total_time_ms": 1.1344319959171116,
+      "calls": 110,
+      "avg_time_ms": 0.010313018144701015
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl153_0",
+      "total_time_ms": 1.130816019140184,
+      "calls": 110,
+      "avg_time_ms": 0.010280145628547127
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl37_0",
+      "total_time_ms": 1.1057279999367893,
+      "calls": 110,
+      "avg_time_ms": 0.010052072726698084
+    },
+    {
+      "layer": "/model.23/cv3.2/cv3.2.0/cv3.2.0.1/conv/Conv",
+      "total_time_ms": 1.0830719987861812,
+      "calls": 110,
+      "avg_time_ms": 0.009846109079874375
+    }
+  ]
+}
