@@ -1,156 +1,194 @@
 ﻿# Runtime profiling evidence
 
-## 1. то показывал старый анализ графов
+## 1. Что показывает анализ графовых оптимизаций
 
-Файлы:
+В проекте есть два уровня анализа ONNX-графа:
 
-- `runtime_graphs/onnx_original_ops.json`
-- `runtime_graphs/onnx_ort_optimized_ops.json`
+* `runtime_graphs/onnx_original_ops.json`
+* `runtime_graphs/onnx_ort_optimized_ops.json`
 
-это **structural graph analysis**, то есть структурный анализ графа.
+Это structural graph analysis, то есть структурный анализ графа.
 
-н показывает не время выполнения слоёв, а то, какие операции есть в графе модели:
+Он отвечает на вопрос: какие операции есть в модели до и после оптимизаций ONNX Runtime. Это не замер времени выполнения слоёв, а анализ структуры вычислительного графа.
 
-- в исходном ONNX после экспорта;
-- в ONNX-графе после оптимизаций ONNX Runtime.
+Исходный ONNX-граф показывает операции после экспорта модели. Оптимизированный ONNX-граф показывает, как ONNX Runtime переписал граф при `GraphOptimizationLevel.ORT_ENABLE_ALL`.
 
-лавный вывод из этого анализа:
+## 2. Выводы из structural graph analysis
 
-ONNX Runtime действительно меняет граф и применяет graph optimization / fusion.  
-апример:
+Главный вывод: ONNX Runtime действительно меняет граф и применяет graph optimization / fusion.
 
-- часть паттернов `Sigmoid` + `Mul` после оптимизации представляется как `QuickGelu`;
-- `MatMul` после оптимизации представляется как `FusedMatMul`.
+Примеры:
 
-ажно: это не доказывает ускорение конкретного слоя.  
-то доказывает, что структура графа изменилась и runtime применил оптимизации.
+* часть паттернов `Sigmoid` + `Mul` после оптимизации представляется как `QuickGelu`;
+* `MatMul` после оптимизации представляется как `FusedMatMul`.
 
-Фактическое ускорение доказывается benchmark-таблицей:
+Что это означает:
 
-- `results/benchmark_summary.csv`
+* runtime не всегда исполняет граф ровно в том виде, в каком он был экспортирован из PyTorch;
+* часть операций может быть заменена или объединена;
+* structural-анализ помогает увидеть факт graph fusion / graph rewrite.
 
-## 2. то добавлено после замечания
+Ограничение:
 
-осле замечания был добавлен ONNX Runtime profiling:
+* этот анализ не показывает layer latency;
+* сам факт появления `QuickGelu` или `FusedMatMul` не доказывает ускорение конкретного слоя;
+* фактическое ускорение доказывается benchmark-таблицей `results/benchmark_summary.csv`.
 
-- `scripts/profile_onnx_runtime.py`
-- `runtime_graphs/onnx_runtime_profile_summary.json`
-- `runtime_graphs/onnx_runtime_profile_sample.json`
+## 3. ONNX Runtime profiling
+
+После замечания был добавлен ONNX Runtime profiling:
+
+* `scripts/profile_onnx_runtime.py`
+* `runtime_graphs/onnx_runtime_profile_summary.json`
+* `runtime_graphs/onnx_runtime_profile_sample.json`
 
 Скрипт включает:
 
-- `SessionOptions.enable_profiling = True`
-- `GraphOptimizationLevel.ORT_ENABLE_ALL`
-- `CUDAExecutionProvider`
-- warmup
-- повторные inference-итерации на input shape `1x3x640x640`
+* `SessionOptions.enable_profiling = True`
+* `GraphOptimizationLevel.ORT_ENABLE_ALL`
+* `CUDAExecutionProvider`
+* warmup
+* 100 inference-итераций
+* input shape `1x3x640x640`
 
- отличие от operator-count JSON, этот profiling JSON уже показывает runtime trace: события, реально выполненные узлы/kernel events и их длительности.
+В отличие от operator-count JSON, этот profiling JSON уже показывает runtime trace: реально выполненные node/kernel events и их длительности.
 
-## 3. роверка CUDAExecutionProvider
+## 4. Проверка CUDAExecutionProvider
 
-рофилирование было запущено через ONNX Runtime с CUDAExecutionProvider.
+Профилирование ONNX Runtime было запущено через CUDAExecutionProvider.
 
- summary зафиксировано:
+В `onnx_runtime_profile_summary.json` зафиксировано:
 
-- `cuda_execution_provider_started: true`
-- `active_session_providers: CUDAExecutionProvider, CPUExecutionProvider`
-- `onnxruntime_version: 1.26.0`
-- `torch: 2.12.1+cu126`
-- `torch_cuda: 12.6`
-- `torch_cudnn: 91002`
+* `cuda_execution_provider_started: true`
+* `active_session_providers: CUDAExecutionProvider, CPUExecutionProvider`
+* `avg_wall_time_ms: 6.849980000406504`
+* `node_event_count: 24990`
 
-ажный технический момент:
+Технический момент:
 
-в скрипте сначала импортируется `torch`, чтобы PyTorch загрузил свои CUDA/cuDNN DLL, и только потом импортируется `onnxruntime`.  
-ез этого ONNX Runtime на Windows может не поднять CUDA provider из-за проблем с DLL.
+в `scripts/profile_onnx_runtime.py` сначала импортируется `torch`, чтобы PyTorch загрузил свои CUDA/cuDNN DLL, и только потом импортируется `onnxruntime`.
 
-## 4. очему raw JSON не закоммичен
+Это важно для Windows-окружения, потому что без подгруженных CUDA/cuDNN DLL ONNX Runtime может не поднять CUDA provider.
 
-Raw ONNX Runtime profile получился большим:
+## 5. Почему raw ONNX profile не закоммичен
 
-- `runtime_graphs/onnx_runtime_profile_raw.json`
+Raw ONNX Runtime profile получается большим и не коммитится в репозиторий.
 
-н не коммитится в репозиторий, потому что весит десятки мегабайт.
+Вместо него добавлены:
 
-место него в репозиторий добавлены:
+* компактный summary;
+* sample первых profiling events.
 
-- компактный summary;
-- sample первых events из raw profile.
+Этого достаточно, чтобы показать формат JSON-трассы и основные runtime-выводы, не раздувая GitHub-репозиторий.
 
-того достаточно, чтобы показать формат JSON-трассы и основные runtime-выводы.
+## 6. Почему avg_wall_time_ms из ONNX profiling не равен benchmark
 
-## 5. очему avg_wall_time_ms из profiling не равен benchmark
+В `onnx_runtime_profile_summary.json` есть `avg_wall_time_ms`.
 
- `onnx_runtime_profile_summary.json` есть `avg_wall_time_ms`.
+Это значение измерено:
 
-то время измерено:
+* на random input;
+* с включённым profiling;
+* в отдельном low-level ONNX Runtime loop.
 
-- на random input;
-- с включённым profiling;
-- в отдельном low-level ONNX Runtime loop.
+Поэтому это значение не заменяет основной benchmark.
 
-оэтому это значение нельзя напрямую сравнивать с основной benchmark-таблицей.
+Основное сравнение runtime остаётся в:
 
-сновное сравнение runtime остаётся здесь:
+* `results/benchmark_summary.csv`
 
-- `results/benchmark_summary.csv`
+Методология основного benchmark:
 
-етодология основного benchmark:
+* GPU: NVIDIA GeForce RTX 4070 12 GB
+* imgsz: 640
+* batch: 1
+* warmup + repeated runs
+* метрика: `inference ms/image` из Ultralytics validation
 
-- GPU: NVIDIA GeForce RTX 4070 12 GB
-- imgsz: 640
-- batch: 1
-- warmup + repeated runs
-- метрика: `inference ms/image` из Ultralytics validation
+## 7. TensorRT runtime profiling
 
-## 6. TensorRT profiling
+Изначально планировалось использовать `trtexec` / `trt-engine-explorer`, но локально `trtexec` не был доступен в PATH.
 
-сновной TensorRT benchmark уже есть:
+После этого был добавлен альтернативный runtime-level profiling через TensorRT Python API:
 
-- TensorRT FP16
-- TensorRT INT8
+* `scripts/profile_tensorrt_current.py`
+* `runtime_graphs/tensorrt_fp16_current_layer_info.json`
+* `runtime_graphs/tensorrt_fp16_current_profile.json`
+* `runtime_graphs/tensorrt_fp16_current_times.json`
+* `runtime_graphs/tensorrt_fp16_current_runtime_summary.json`
+* `runtime_graphs/tensorrt_fp16_current_top_layers.csv`
+* `runtime_graphs/tensorrt_fp16_current_python_profile.log`
 
-езультаты лежат в:
+Старый serialized TensorRT engine оказался несовместим с текущей версией TensorRT. Поэтому engine был пересобран заново из ONNX текущим TensorRT `11.1.0.106` и затем профилирован.
 
-- `results/benchmark_summary.csv`
+В `tensorrt_fp16_current_runtime_summary.json` зафиксировано:
 
-о глубокий per-layer TensorRT profiling требует внешние NVIDIA tools:
+* `analysis_type: TensorRT current-version build + runtime profiling`
+* `tensorrt_version: 11.1.0.106`
+* `gpu: NVIDIA GeForce RTX 4070`
+* `profiler_attached: true`
+* `raw_layer_record_count: 35090`
+* `unique_profiled_layers: 319`
+* `avg_wall_time_ms: 3.603655000915751`
 
-- `trtexec`
-- или `trt-engine-explorer`
+Это уже runtime-level evidence для TensorRT: есть информация по engine, profile, times и top layers.
 
-окально `trtexec.exe` не найден.
+## 8. Что показывает TensorRT profile
 
-то зафиксировано явно в файле:
+TensorRT runtime analysis показывает:
 
-- `runtime_graphs/tensorrt_trtexec_unavailable.json`
+* какой engine был построен из ONNX;
+* какие tensors есть у engine;
+* какую информацию о слоях возвращает Engine Inspector;
+* какие слои / fused layers профилируются во время inference;
+* какие слои занимают больше всего времени;
+* среднее wall-time в отдельном TensorRT inference loop.
 
-Также добавлен воспроизводимый скрипт:
+Это отличается от ONNX operator-count analysis:
 
-- `scripts/profile_tensorrt_trtexec.py`
+* ONNX operator-count показывает структуру ONNX-графа;
+* ONNX Runtime profile показывает runtime trace ONNX Runtime;
+* TensorRT runtime profile показывает уже serialized TensorRT engine, то есть граф, который исполняется TensorRT после своих оптимизаций.
 
-огда в окружении появится `trtexec.exe`, этот скрипт сможет выгрузить:
+## 9. Benchmark summary
 
-- TensorRT layer info JSON;
-- TensorRT runtime profile JSON;
-- TensorRT inference times JSON;
-- trtexec log.
+Основной benchmark лежит в:
 
-## 7. тоговый вывод
+* `results/benchmark_summary.csv`
+
+Результаты:
+
+* PyTorch: `4.973 ms/image`
+* ONNX Runtime CUDA: `3.027 ms/image`
+* TensorRT FP16: `1.485 ms/image`
+* TensorRT INT8: `1.526 ms/image`
+
+Вывод:
+
+TensorRT FP16 — лучший практический вариант для этой модели и этого окружения. Он даёт минимальное inference time при сохранении качества.
+
+INT8 в этом эксперименте не дал выигрыша относительно FP16 и немного снизил качество. Возможная причина: модель маленькая, batch = 1, RTX 4070 хорошо ускоряет FP16, а INT8 overhead/calibration/quantization effects не дают преимущества на этой конкретной задаче.
+
+## 10. Итог
 
 Теперь анализ разделён на три уровня:
 
-1. `onnx_original_ops.json` / `onnx_ort_optimized_ops.json`  
+1. `onnx_original_ops.json` / `onnx_ort_optimized_ops.json`
    Structural graph analysis: показывает, как меняется структура ONNX-графа после оптимизаций.
 
-2. `onnx_runtime_profile_summary.json` / `onnx_runtime_profile_sample.json`  
+2. `onnx_runtime_profile_summary.json` / `onnx_runtime_profile_sample.json`
    ONNX Runtime profiling: показывает runtime trace с реально выполненными событиями и длительностями.
 
-3. `profile_tensorrt_trtexec.py` / `tensorrt_trtexec_unavailable.json`  
-   одготовленный путь для TensorRT per-layer profiling через trtexec. окально не выполнен, потому что TensorRT tools отсутствуют.
+3. `tensorrt_fp16_current_*` artifacts
+   TensorRT runtime profiling: показывает runtime-level анализ свежесобранного TensorRT engine.
 
-лавный практический вывод по runtime остаётся прежним:
+Таким образом, по helmet-модели закрыты:
 
-TensorRT FP16 — лучший вариант для этой модели и этого окружения, потому что он даёт минимальное inference time при сохранении качества.  
-INT8 в этом эксперименте не дал выигрыша относительно FP16 и немного снизил качество.
+* код обучения;
+* воспроизводимый pipeline;
+* методология benchmark;
+* GPU и условия замеров;
+* объяснение FP16 vs INT8;
+* ONNX graph optimization analysis;
+* ONNX Runtime JSON profiling;
+* TensorRT runtime profiling.
